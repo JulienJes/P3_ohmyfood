@@ -34,9 +34,10 @@ h1, h2, h4 {
 .btn {
   border: none;
   border-radius: 30px;
-  padding: 1em 0;
+  padding: 0.5em 0;
   color: white;
   background: linear-gradient(#FF79DA, #9356DC);
+  margin: 1em auto;
   cursor: pointer; }
 
 ul {
@@ -48,16 +49,17 @@ a {
   /* à voir plus tard */
   text-decoration: none; }
 
+img {
+  object-fit: cover; }
+
 /* ---------------------------- Header ---------------------------- */
 .logo {
   margin: 1em 0; }
-
-.logo a {
-  display: flex;
-  justify-content: center; }
-
-.logo img {
-  width: 60%; }
+  .logo a {
+    display: flex;
+    justify-content: center; }
+  .logo img {
+    width: 60%; }
 
 /* ---------------------------- Réservation ---------------------------- */
 #explorer {
@@ -67,15 +69,13 @@ a {
 
 .recherche {
   flex-basis: 100%; }
-
-.recherche label {
-  position: absolute;
-  left: -999px; }
-
-.recherche i {
-  position: absolute;
-  left: 35%;
-  /*attention: pas absolute mais relative ne marche pas non plus*/ }
+  .recherche label {
+    position: absolute;
+    left: -999px; }
+  .recherche i {
+    position: absolute;
+    left: 35%;
+    /*attention: pas absolute mais relative ne marche pas non plus*/ }
 
 #site-search {
   width: 100%;
@@ -90,17 +90,15 @@ a {
 .corps {
   display: flex;
   flex-direction: column;
-  padding-bottom: 3em; }
+  align-items: center;
+  padding: 1em 0 2em 0; }
 
-.title {
-  text-align: center; }
-
-.subtitle {
-  text-align: center; }
+.title, .subtitle {
+  text-align: center;
+  line-height: 1em;
+  width: 80%; }
 
 .corps .btn {
-  margin-left: auto;
-  margin-right: auto;
   width: 13em; }
 
 /* ---------------------------- Fonctionnement ---------------------------- */
@@ -108,17 +106,70 @@ a {
   display: flex;
   flex-wrap: wrap;
   background-color: #F6F6F6;
-  border-radius: 2em;
-  padding: 1em 0;
-  /*généralisable avec .btn?*/ }
+  border-radius: 1em;
+  margin: 1em 0;
+  box-shadow: 0 0.2em 0.5em grey; }
+  .section__method span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.875em;
+    height: 1.875em;
+    border-radius: 50%;
+    background-color: #9356DC;
+    color: white;
+    position: relative;
+    left: -0.625em;
+    margin-top: 1em; }
+  .section__method i {
+    margin-top: 1.3em;
+    color: grey; }
+  .section__method p {
+    font-weight: bold;
+    margin-left: 1em; }
 
 /* ---------------------------- Restaurants ---------------------------- */
+.card {
+  border-radius: 1em;
+  background-color: white;
+  margin: 1em 0; }
+  .card img {
+    width: 100%;
+    height: 10em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em; }
+  .card h3, .card p {
+    margin: 0; }
+  .card .fas {
+    color: #9356DC; }
+    .card .fas:hover {
+      display: unset; }
+
+.new {
+  border-radius: 0.15em;
+  background-color: #99e2d0;
+  color: #008766;
+  padding: 0.2em;
+  font-weight: bold;
+  position: absolute;
+  left: 5em;
+  bottom: 1em;
+  /* euuuhhhhh okay? x) */ }
+
 /* ---------------------------- Footer ---------------------------- */
 footer {
   background-color: #353535; }
+  footer a {
+    color: white; }
+  footer .fas {
+    margin-right: 1em; }
+  footer .fa-hands-helping {
+    font-size: 0.8em;
+    /* bonne méthode??? */ }
 
-footer a {
-  color: white; }
+.title__footer {
+  font-size: 1em;
+  font-weight: unset; }
 
 /* ---------------------------- Tablettes ---------------------------- */
 /* ---------------------------- Desktop ---------------------------- */

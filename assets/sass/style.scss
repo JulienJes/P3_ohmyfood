@@ -10,115 +10,97 @@ $color-tertiary: #99E2D0;
 $color-background: #F6F6F6;
 
 /* ---------------------------- Global ---------------------------- */
-*
-{
+*{
 	box-sizing: border-box;
 }
 
-html
-{
+html{
 	scroll-behavior: smooth;
 }
 
-body, input, button, optgroup, select, textarea
-{
+body, input, button, optgroup, select, textarea{
 	font-family: 'Roboto', sans-serif;
 	font-size: 1em;
 	line-height: 1.8;
 	margin: 0;
 }
 
-h1, h2, h4
-{
+h1, h2, h4{
 	font-family: 'Shrikhand', sans-serif;
 }
 
-.container
-{
+.container{
 	overflow-anchor: none;
 }
 
-#fonctionnement, #restaurants, footer
-{
+#fonctionnement, #restaurants, footer{
 	padding: 1em 1em;
 }
 
-.corps, #restaurants
-{
+.corps, #restaurants{
 	background-color: $color-background;
 }
 
-.title, .title__section
-{
+.title, .title__section{
 	font-family: inherit;
 }
 
-.btn
-{
+.btn{
 	border: none;
 	border-radius: 30px;
-	padding: 1em 0;
+	padding: 0.5em 0;
 	color: white;
 	background: linear-gradient($color-secondary, $color-primary);
+	margin: 1em auto;
 	cursor: pointer;
 }
 
-ul
-{
+ul{
 	list-style: none;
 	padding: unset;
 }
 
-a
-{
+a{
 	color: unset; /* à voir plus tard */
 	text-decoration: none;
 }
 
+img{
+	object-fit: cover;
+}
+
 /* ---------------------------- Header ---------------------------- */
 
-.logo
-{
+.logo{
 	margin: 1em 0;
-}
-
-.logo a
-{
-	display: flex;
-	justify-content: center;
-}
-
-.logo img
-{
-	width: 60%;
+	& a{
+		display: flex;
+		justify-content: center;
+	}
+	& img{
+		width: 60%;
+	}
 }
 
 /* ---------------------------- Réservation ---------------------------- */
 
-#explorer
-{
+#explorer{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
-.recherche
-{
+.recherche{
 	flex-basis: 100%;
+	& label{
+		position:absolute; left:-999px
+	}
+	& i{
+		position: absolute; left: 35%; /*attention: pas absolute mais relative ne marche pas non plus*/
+	}
 }
 
-.recherche label
-{
-	position:absolute; left:-999px
-}
-
-.recherche i
-{
-	position: absolute; left: 35%; /*attention: pas absolute mais relative ne marche pas non plus*/
-}
-
-#site-search
-{
+#site-search{
 	width: 100%;
 	background-color: $color-background;
 	border: none;
@@ -128,76 +110,123 @@ a
 	box-shadow: 0 0.2em 0.5em grey inset; /* ombre à droite??? */
 }
 
-.corps
-{
+.corps{
 	display: flex;
 	flex-direction: column;
-	padding-bottom: 3em;
+	align-items: center;
+	padding: 1em 0 2em 0;
 }
 
-.title
-{
+.title, .subtitle{
 	text-align: center;
+	line-height: 1em;
+	width: 80%
 }
 
-.subtitle
-{
-	text-align: center;
-}
-
-.corps .btn
-{
-    margin-left: auto;
-    margin-right: auto;
+.corps .btn{
     width: 13em
 }
 
 /* ---------------------------- Fonctionnement ---------------------------- */
 
-#fonctionnement
-{
+#fonctionnement{
 
 }
 
-.section__method
-{
+.section__method{
 	display: flex;
 	flex-wrap: wrap;
 	background-color: $color-background;
-	border-radius: 2em;
-	padding: 1em 0; /*généralisable avec .btn?*/
+	border-radius: 1em;
+	margin: 1em 0;
+	box-shadow: 0 0.2em 0.5em grey;
+		& span{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.875em;
+		height: 1.875em;
+		border-radius: 50%;
+		background-color: $color-primary;
+		color: white;
+		position: relative;
+		left: -0.625em;
+		margin-top: 1em;
+		}
+		& i{
+			margin-top: 1.3em;
+			color: grey;
+		}
+		& p{
+			font-weight: bold;
+			margin-left: 1em;
+		}
 }
 
 /* ---------------------------- Restaurants ---------------------------- */
 
-#restaurants
-{
+#restaurants{
 
+}
+
+.card{
+	border-radius: 1em;
+	background-color: white;
+	margin: 1em 0;
+	& img{
+		width: 100%;
+		height: 10em;
+		border-top-left-radius: 1em;
+		border-top-right-radius: 1em;
+	 }
+	& h3,& p{
+		  margin: 0;
+	  }
+	& .fas{
+		color: $color-primary;
+		&:hover{
+			display: unset;
+		}
+	}
+}
+
+.new{
+	border-radius: 0.15em;
+	background-color: #99e2d0;
+	color: #008766;
+	padding: 0.2em;
+	font-weight: bold;
+	position: absolute; left: 5em; bottom: 1em; /* euuuhhhhh okay? x) */
 }
 
 /* ---------------------------- Footer ---------------------------- */
 
-footer
-{
+footer{
 	background-color: #353535;
+	& a{
+		color: white;
+	}
+	& .fas{
+		margin-right: 1em;
+	}
+	& .fa-hands-helping{
+		font-size:0.8em; /* bonne méthode??? */
+	}
 }
 
-
-footer a
-{
-	color: white;
+.title__footer{
+	font-size: 1em;
+	font-weight: unset;
 }
 
 /* ---------------------------- Tablettes ---------------------------- */
 
-@media screen and (min-width:768px)
-{
+@media screen and (min-width:768px){
 
 }
 
 /* ---------------------------- Desktop ---------------------------- */
 
-@media screen and (min-width:992px)
-{
+@media screen and (min-width:992px){
 	
 }
