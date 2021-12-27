@@ -1,0 +1,126 @@
+@charset "UTF-8";
+/* To-do list ----------------------------
+
+*/
+/* ---------------------------- Variables ---------------------------- */
+/* ---------------------------- Global ---------------------------- */
+* {
+  box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth; }
+
+body, input, button, optgroup, select, textarea {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  line-height: 1.8;
+  margin: 0; }
+
+h1, h2, h4 {
+  font-family: 'Shrikhand', sans-serif; }
+
+.container {
+  overflow-anchor: none; }
+
+#fonctionnement, #restaurants, footer {
+  padding: 1em 1em; }
+
+.corps, #restaurants {
+  background-color: #F6F6F6; }
+
+.title, .title__section {
+  font-family: inherit; }
+
+.btn {
+  border: none;
+  border-radius: 30px;
+  padding: 1em 0;
+  color: white;
+  background: linear-gradient(#FF79DA, #9356DC);
+  cursor: pointer; }
+
+ul {
+  list-style: none;
+  padding: unset; }
+
+a {
+  color: unset;
+  /* à voir plus tard */
+  text-decoration: none; }
+
+/* ---------------------------- Header ---------------------------- */
+.logo {
+  margin: 1em 0; }
+
+.logo a {
+  display: flex;
+  justify-content: center; }
+
+.logo img {
+  width: 60%; }
+
+/* ---------------------------- Réservation ---------------------------- */
+#explorer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.recherche {
+  flex-basis: 100%; }
+
+.recherche label {
+  position: absolute;
+  left: -999px; }
+
+.recherche i {
+  position: absolute;
+  left: 35%;
+  /*attention: pas absolute mais relative ne marche pas non plus*/ }
+
+#site-search {
+  width: 100%;
+  background-color: #F6F6F6;
+  border: none;
+  padding: 1em;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 0.2em 0.5em grey inset;
+  /* ombre à droite??? */ }
+
+.corps {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3em; }
+
+.title {
+  text-align: center; }
+
+.subtitle {
+  text-align: center; }
+
+.corps .btn {
+  margin-left: auto;
+  margin-right: auto;
+  width: 13em; }
+
+/* ---------------------------- Fonctionnement ---------------------------- */
+.section__method {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #F6F6F6;
+  border-radius: 2em;
+  padding: 1em 0;
+  /*généralisable avec .btn?*/ }
+
+/* ---------------------------- Restaurants ---------------------------- */
+/* ---------------------------- Footer ---------------------------- */
+footer {
+  background-color: #353535; }
+
+footer a {
+  color: white; }
+
+/* ---------------------------- Tablettes ---------------------------- */
+/* ---------------------------- Desktop ---------------------------- */
+
+/*# sourceMappingURL=style.css.map */
