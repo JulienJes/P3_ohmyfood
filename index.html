@@ -18,16 +18,20 @@
 		</header>
 		<main>
 			<section id="explorer">
-				<div class="recherche"> <!-- faire un focus dans css pour faire disparaitre ça -->
-					<label for="site-search">Veuillez taper votre recherche ici</label>
-					<i class="fas fa-map-marker-alt"></i>
-					<input type="search" id="site-search" placeholder="Paris, Belleville">
-				</div>
-				<div class="corps">
-					<h1 class="title">Réservez le menu qui vous convient</h1>
-					<p class="subtitle">Découvrez des restaurants d'exception, séléctionnés par nos soins.</p>
-					<button type="submit" class="btn">Explorer nos restaurants</button> <!-- le link se fait via JS (donc pas concerné)-->
-				</div>
+				<form>
+					<div class="recherche"> <!-- faire un focus dans css pour faire disparaitre ça -->
+						<label for="site-search">Veuillez taper votre recherche ici</label>
+						<div class="recherche__form">
+							<i class="fas fa-map-marker-alt"></i>
+							<input type="search" id="site-search" placeholder="Paris, Belleville">
+						</div>
+					</div>
+					<div class="corps">
+						<h1 class="title">Réservez le menu qui vous convient</h1>
+						<p class="subtitle">Découvrez des restaurants d'exception, séléctionnés par nos soins.</p>
+						<button type="submit" class="btn">Explorer nos restaurants</button> <!-- le link se fait via JS (donc pas concerné)-->
+					</div>
+				</form>
 			</section>
 			<section id="fonctionnement">
 				<h2 class="title__section">Fonctionnement</h2>
@@ -43,9 +47,9 @@
 			</section>
 			<section id="restaurants">
 				<h2 class="title__section">Restaurants</h2>
-				<div class="card"> <!-- relative -->
+				<div class="card">
 					<a href="menus/restaurant-palette.html">
-						<span class="new">Nouveau</span> <!-- absolute -->
+						<span class="new">Nouveau</span>
 						<div class="card-image"> 
 							<img src="assets/img/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" alt="palette">
 						</div>
