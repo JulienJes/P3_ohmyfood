@@ -20,93 +20,95 @@
 			</a>
 		</header>
 		<main>
-			<a href="#"><img src="../assets/img/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" alt="palette"></a>
-			<h1>La palette du goût</h1><i class="far fa-heart"></i><i class="fas fa-heart"></i> <!-- Attention: c'est le premier par défaut et le second au survol -->
-			<!-- <i class="fas fa-check-circle"></i> A faire apparaitre au survol d'un plat -->
-			<form method="post" action="#" id="entrees">
-				<fieldset>
-					<legend>entrées</legend> <!-- Forcer la maj avec CSS -->
-					<div class="card">
-						<input type="checkbox" name="escargot">
-						<label>
-							<span>Fricassée d'escargot</span>
-							<span>Au piment d'Espelette</span>
-							<span>25€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="foiegras">
-						<label>
-							<span>Foie gras de canard mi-cuit</span>
-							<span>Et ses copeaux de truffe noire</span>
-							<span>35€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="oeuf">
-						<label>
-							<span>Oeuf au plat</span>
-							<span>Assaisonné à la truffe sur lit de caviar</span>
-							<span>20€</span>
-						</label>
-					</div>
-				</fieldset>
-				<fieldset>
-					<legend>plats</legend> <!-- Forcer la maj avec CSS -->
-					<div class="card">
-						<input type="checkbox" name="herbes">
-						<label>
-							<span>Filet de boeuf aux herbes</span>
-							<span>Accompagné de sa ribambelle de légumes</span>
-							<span>40€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="parmentier">
-						<label>
-							<span>Parmentier de queue de boeuf</span>
-							<span>À la truffe noire sur sa purée de panais</span>
-							<span>35€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="turbot">
-						<label>
-							<span>Filet de turbot</span>
-							<span>Aux agrumes</span>
-							<span>44€</span>
-						</label>
-					</div>
-				</fieldset>
-				<fieldset>
-					<legend>desserts</legend> <!-- Forcer la maj avec CSS -->
-					<div class="card">
-						<input type="checkbox" name="pb">
-						<label>
-							<span>Paris-Brest</span>
-							<span>Revisité</span>
-							<span>18€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="macaron">
-						<label>
-							<span>Macaron au chocolat d'exception</span>
-							<span>Et glace à la vanille de Madagascar</span>
-							<span>22€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="mousse">
-						<label>
-							<span>Mousse au chocolat</span>
-							<span>Au piment d'Espelette et à la truffe noire</span>
-							<span>23€</span>
-						</label>
-					</div>
-				</fieldset>
-				<button type="submit" class="btn">Commander</button>
-			</form>
+			<a href="#" class="cover"><img src="../assets/img/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" alt="palette"></a>
+			<div class="menu">
+				<h1>La palette du goût</h1><i class="far fa-heart"></i><i class="fas fa-heart"></i> <!-- Attention: c'est le premier par défaut et le second au survol -->
+				<!-- <i class="fas fa-check-circle"></i> A faire apparaitre au survol d'un plat -->
+				<form method="post" action="#" id="carte">
+					<fieldset>
+						<legend>entrées</legend>
+						<div class="card">
+							<input type="checkbox" name="escargot">
+							<label>
+								<span>Fricassée d'escargot</span>
+								<span>Au piment d'Espelette</span>
+								<span>25€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="foiegras">
+							<label>
+								<span>Foie gras de canard mi-cuit</span>
+								<span>Et ses copeaux de truffe noire</span>
+								<span>35€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="oeuf">
+							<label>
+								<span>Oeuf au plat</span>
+								<span>Assaisonné à la truffe sur lit de caviar</span>
+								<span>20€</span>
+							</label>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>plats</legend> <!-- Forcer la maj avec CSS -->
+						<div class="card">
+							<input type="checkbox" name="herbes">
+							<label>
+								<span>Filet de boeuf aux herbes</span>
+								<span>Accompagné de sa ribambelle de légumes</span>
+								<span>40€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="parmentier">
+							<label>
+								<span>Parmentier de queue de boeuf</span>
+								<span>À la truffe noire sur sa purée de panais</span>
+								<span>35€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="turbot">
+							<label>
+								<span>Filet de turbot</span>
+								<span>Aux agrumes</span>
+								<span>44€</span>
+							</label>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>desserts</legend> <!-- Forcer la maj avec CSS -->
+						<div class="card">
+							<input type="checkbox" name="pb">
+							<label>
+								<span>Paris-Brest</span>
+								<span>Revisité</span>
+								<span>18€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="macaron">
+							<label>
+								<span>Macaron au chocolat d'exception</span>
+								<span>Et glace à la vanille de Madagascar</span>
+								<span>22€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="mousse">
+							<label>
+								<span>Mousse au chocolat</span>
+								<span>Au piment d'Espelette et à la truffe noire</span>
+								<span>23€</span>
+							</label>
+						</div>
+					</fieldset>
+					<button type="submit" class="btn">Commander</button>
+				</form>
+			</div>
 		</main>
 		<footer class="container">
 			<a href="../index.html"><h2 class="title__footer">ohmyfood</h2></a>

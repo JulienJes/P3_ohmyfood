@@ -20,93 +20,95 @@
 			</a>
 		</header>
 		<main>
-			<a href="#"><img src="../assets/img/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg" alt="française"></a>
-			<h1>La note enchantée</h1><i class="far fa-heart"></i><i class="fas fa-heart"></i> <!-- Attention: c'est le premier par défaut et le second au survol -->
-			<!-- <i class="fas fa-check-circle"></i> A faire apparaitre au survol d'un plat -->
-			<form method="post" action="#" id="entrees">
-				<fieldset>
-					<legend>entrées</legend> <!-- Forcer la maj avec CSS -->
-					<div class="card">
-						<input type="checkbox" name="tartare">
-						<label>
-							<span>Tartare de poulpe acidulé</span>
-							<span>Aux zestes d'orange</span>
-							<span>25€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="légumes">
-						<label>
-							<span>Velouté de légumes d'antan</span>
-							<span>Carotte, panais, topinambour</span>
-							<span>35€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="soupe">
-						<label>
-							<span>Soupe à l'oignon</span>
-							<span>Revisitée</span>
-							<span>20€</span>
-						</label>
-					</div>
-				</fieldset>
-				<fieldset>
-					<legend>plats</legend> <!-- Forcer la maj avec CSS -->
-					<div class="card">
-						<input type="checkbox" name="coquilles">
-						<label>
-							<span>Coquilles Saint-Jacques</span>
-							<span>Accompagnées d'une purée de panais</span>
-							<span>40€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="canard">
-						<label>
-							<span>Magret de canard</span>
-							<span>Et parmentier de pommes de terre</span>
-							<span>35€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="pigeonneau">
-						<label>
-							<span>Pigeonneau d’Ille-et-Vilaine</span>
-							<span>Sur son lit de gnocchis aux légumes</span>
-							<span>44€</span>
-						</label>
-					</div>
-				</fieldset>
-				<fieldset>
-					<legend>desserts</legend> <!-- Forcer la maj avec CSS -->
-					<div class="card">
-						<input type="checkbox" name="petales">
-						<label>
-							<span>Pétales de violettes glacés</span>
-							<span>Et purée de noisettes</span>
-							<span>18€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="fondant">
-						<label>
-							<span>Fondant au chocolat</span>
-							<span>Revisité</span>
-							<span>22€</span>
-						</label>
-					</div>
-					<div class="card">
-						<input type="checkbox" name="millefeuille">
-						<label>
-							<span>Millefeuille croustillant</span>
-							<span>Myrtilles et pâte d’amande</span>
-							<span>23€</span>
-						</label>
-					</div>
-				</fieldset>
-				<button type="submit" class="btn">Commander</button>
-			</form>
+			<a href="#" class="cover"><img src="../assets/img/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg" alt="française"></a>
+			<div class="menu">
+				<h1>La note enchantée</h1><i class="far fa-heart"></i><i class="fas fa-heart"></i> <!-- Attention: c'est le premier par défaut et le second au survol -->
+				<!-- <i class="fas fa-check-circle"></i> A faire apparaitre au survol d'un plat -->
+				<form method="post" action="#" id="carte">
+					<fieldset>
+						<legend>entrées</legend>
+						<div class="card">
+							<input type="checkbox" name="tartare">
+							<label>
+								<span>Tartare de poulpe acidulé</span>
+								<span>Aux zestes d'orange</span>
+								<span>25€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="légumes">
+							<label>
+								<span>Velouté de légumes d'antan</span>
+								<span>Carotte, panais, topinambour</span>
+								<span>35€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="soupe">
+							<label>
+								<span>Soupe à l'oignon</span>
+								<span>Revisitée</span>
+								<span>20€</span>
+							</label>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>plats</legend> <!-- Forcer la maj avec CSS -->
+						<div class="card">
+							<input type="checkbox" name="coquilles">
+							<label>
+								<span>Coquilles Saint-Jacques</span>
+								<span>Accompagnées d'une purée de panais</span>
+								<span>40€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="canard">
+							<label>
+								<span>Magret de canard</span>
+								<span>Et parmentier de pommes de terre</span>
+								<span>35€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="pigeonneau">
+							<label>
+								<span>Pigeonneau d’Ille-et-Vilaine</span>
+								<span>Sur son lit de gnocchis aux légumes</span>
+								<span>44€</span>
+							</label>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>desserts</legend> <!-- Forcer la maj avec CSS -->
+						<div class="card">
+							<input type="checkbox" name="petales">
+							<label>
+								<span>Pétales de violettes glacés</span>
+								<span>Et purée de noisettes</span>
+								<span>18€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="fondant">
+							<label>
+								<span>Fondant au chocolat</span>
+								<span>Revisité</span>
+								<span>22€</span>
+							</label>
+						</div>
+						<div class="card">
+							<input type="checkbox" name="millefeuille">
+							<label>
+								<span>Millefeuille croustillant</span>
+								<span>Myrtilles et pâte d’amande</span>
+								<span>23€</span>
+							</label>
+						</div>
+					</fieldset>
+					<button type="submit" class="btn">Commander</button>
+				</form>
+			</div>
 		</main>
 		<footer class="container">
 			<a href="../index.html"><h2 class="title__footer">ohmyfood</h2></a>
