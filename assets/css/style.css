@@ -46,16 +46,27 @@ ul {
 
 a {
   color: unset;
-  /* à voir plus tard */
   text-decoration: none; }
+  a:hover {
+    color: #9356DC; }
+    a:hover .far .fas {
+      color: black; }
 
 img {
   object-fit: cover; }
 
+legend:after {
+  content: "";
+  border-bottom: 3px solid #99E2D0;
+  width: 20px; }
+
+/*input:after{
+	content:"\f3c5";
+	font-family: "Font Awesome 5 Free";
+}*/
 /* ---------------------------- Header ---------------------------- */
 .logo {
-  margin: 1em 0;
-  /* ne concerne que les pages des menus */ }
+  margin: 1em 0; }
   .logo a {
     display: flex;
     justify-content: center;
@@ -80,22 +91,20 @@ img {
   .recherche__form {
     display: flex;
     align-items: center;
-    position: relative; }
+    justify-content: center;
+    width: 100%;
+    height: 3em;
+    background-color: #F6F6F6;
+    box-shadow: 0 0.2em 0.5em grey inset; }
     .recherche__form i {
       color: grey;
-      z-index: 99;
-      position: absolute;
-      left: 5em; }
+      padding-bottom: 3px; }
 
 #site-search {
-  width: 100%;
-  background-color: #F6F6F6;
   border: none;
-  padding: 1em;
   text-align: center;
   font-weight: bold;
-  box-shadow: 0 0.2em 0.5em grey inset;
-  /* ombre à droite??? */ }
+  background-color: transparent; }
 
 .corps {
   display: flex;
@@ -138,6 +147,10 @@ img {
   .section__method p {
     font-weight: bold;
     margin-left: 1em; }
+  .section__method:hover {
+    background-color: #e4d5f6; }
+    .section__method:hover i {
+      color: #9356DC; }
 
 /* ---------------------------- Restaurants ---------------------------- */
 .card {
@@ -169,7 +182,7 @@ img {
 
 .new {
   border-radius: 0.15em;
-  background-color: #99e2d0;
+  background-color: #99E2D0;
   color: #008766;
   padding: 0 0.8em;
   font-weight: bold;
@@ -181,30 +194,54 @@ img {
 .cover {
   display: block;
   position: relative;
-  z-index: 1; }
+  z-index: 0;
+  height: calc(120em - 18em); }
   .cover img {
     width: 100%;
     max-height: 18em; }
 
 .menu {
   background-color: #F6F6F6;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  border-top-left-radius: 2em;
+  border-top-right-radius: 2em;
   padding: 0 1em 2em 1em;
   position: absolute;
-  z-index: 2;
-  top: 18em; }
-  .menu legend {
-    text-transform: uppercase;
-    text-decoration: underline;
-    text-decoration-color: #99E2D0; }
-  .menu fieldset {
-    border: none;
-    margin: unset;
-    padding: unset; }
+  z-index: 1;
+  top: 18em;
+  width: 100%; }
+  .menu__title {
+    display: flex;
+    align-items: center; }
+    .menu__title .fas {
+      color: #9356DC;
+      visibility: hidden; }
+      .menu__title .fas:hover {
+        visibility: unset; }
+    .menu__title i {
+      font-size: 2em;
+      position: absolute;
+      right: 1em;
+      top: 1em; }
 
-#carte input {
-  display: none; }
+#carte fieldset {
+  border: none;
+  margin: unset;
+  padding: unset; }
+  #carte fieldset legend {
+    text-transform: uppercase; }
+  #carte fieldset .card input {
+    display: none; }
+  #carte fieldset .card label {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0 0.5em 1em;
+    cursor: pointer; }
+    #carte fieldset .card label span:nth-child(2n+1) {
+      font-weight: bold; }
+#carte .button {
+  display: flex; }
+  #carte .button .btn {
+    width: 10em; }
 
 /* ---------------------------- Footer ---------------------------- */
 footer {

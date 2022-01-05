@@ -61,13 +61,30 @@ ul{
 }
 
 a{
-	color: unset; /* à voir plus tard */
+	color: unset;
 	text-decoration: none;
+	&:hover{
+		color: $color-primary;
+		& .far .fas{
+			color: black;
+		}
+	}
 }
 
 img{
 	object-fit: cover;
 }
+
+legend:after{
+	content:"";
+	border-bottom: 3px solid $color-tertiary;
+	width: 20px;
+}
+
+/*input:after{
+	content:"\f3c5";
+	font-family: "Font Awesome 5 Free";
+}*/
 
 /* ---------------------------- Header ---------------------------- */
 
@@ -81,7 +98,7 @@ img{
 	& i{
 		position: absolute;
    		left: 1em;
-	} /* ne concerne que les pages des menus */
+	}
 	& img{
 		width: 60%;
 	}
@@ -103,23 +120,23 @@ img{
 	&__form{
 		display: flex;
 		align-items: center;
-		position: relative;
+		justify-content: center;
+		width: 100%;
+		height: 3em;
+		background-color: $color-background;
+		box-shadow: 0 0.2em 0.5em grey inset;
 		& i{
 			color: grey;
-			z-index: 99;
-			position: absolute; left: 5em;
+			padding-bottom: 3px;
 		}
 	}
 }
 
 #site-search{
-	width: 100%;
-	background-color: $color-background;
 	border: none;
-	padding: 1em;
 	text-align: center;
 	font-weight: bold;
-	box-shadow: 0 0.2em 0.5em grey inset; /* ombre à droite??? */
+	background-color: transparent;
 }
 
 .corps{
@@ -174,6 +191,12 @@ img{
 			font-weight: bold;
 			margin-left: 1em;
 		}
+		&:hover{
+			background-color: lighten($color-primary,30%);
+			& i{
+			color: $color-primary
+			}
+		}
 }
 
 /* ---------------------------- Restaurants ---------------------------- */
@@ -217,7 +240,7 @@ img{
 
 .new{
 	border-radius: 0.15em;
-	background-color: #99e2d0;
+	background-color: $color-tertiary;
 	color: #008766;
 	padding: 0 0.8em;
 	font-weight: bold;
@@ -229,7 +252,8 @@ img{
 .cover{
 	display: block;
 	position: relative;
-	z-index: 1;
+	z-index: 0;
+	height: calc(120em - 18em);
 	& img{
 		width: 100%;
 		max-height: 18em;
@@ -238,25 +262,58 @@ img{
 
 .menu{
 	background-color: $color-background;
-	border-top-left-radius: 30px;
-	border-top-right-radius: 30px;
+	border-top-left-radius: 2em;
+	border-top-right-radius: 2em;
 	padding: 0 1em 2em 1em;
 	position: absolute;
-	z-index: 2; top: 18em;
-	& legend{
-		text-transform: uppercase;
-		text-decoration : underline;
-		text-decoration-color: $color-tertiary;
+	z-index: 1; top: 18em;
+	width: 100%;
+	&__title{
+		display: flex;
+		align-items: center;
+		& .fas{
+			color: $color-primary;
+			visibility: hidden;
+			&:hover{
+				visibility: unset;
+			}
+		}
+		& i{
+		font-size: 2em;
+		position: absolute; right: 1em; top: 1em;
+		}
 	}
+}
+
+#carte{
 	& fieldset{
 		border: none;
 		margin: unset;
 		padding: unset;
+		& legend{
+			text-transform: uppercase;
+		}
+		& .card{
+			& input{
+				display: none;
+			}
+			& label{
+				display: flex;
+				flex-direction: column;
+				padding: 0.5em 0 0.5em 1em;
+				cursor: pointer;
+				& span:nth-child(2n+1){
+					font-weight: bold;
+				}
+			}
+		}
 	}
-}
-
-#carte input{
-	display: none;	
+	& .button{
+		display:flex;
+		& .btn{
+			width: 10em;
+		}
+	}	
 }
 
 /* ---------------------------- Footer ---------------------------- */

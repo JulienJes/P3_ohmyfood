@@ -22,8 +22,10 @@
 		<main>
 			<a href="#" class="cover"><img src="../assets/img/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="délice"></a>
 			<div class="menu">
-				<h1>Le délice des sens</h1><i class="far fa-heart"></i><i class="fas fa-heart"></i> <!-- Attention: c'est le premier par défaut et le second au survol -->
-				<!-- <i class="fas fa-check-circle"></i> A faire apparaitre au survol d'un plat -->
+				<div class="menu__title">
+					<h1>Le délice des sens</h1>
+					<i class="far fa-heart"></i><i class="fas fa-heart"></i>
+				</div>
 				<form method="post" action="#" id="carte">
 					<fieldset>
 						<legend>entrées</legend>
@@ -34,6 +36,7 @@
 								<span>Assaisonné au yuzu</span>
 								<span>25€</span>
 							</label>
+							<i class="fas fa-check-circle"></i>
 						</div>
 						<div class="card">
 							<input type="checkbox" name="homard">
@@ -42,6 +45,7 @@
 								<span>Et sa farandole de petits légumes</span>
 								<span>35€</span>
 							</label>
+							<i class="fas fa-check-circle"></i>
 						</div>
 						<div class="card">
 							<input type="checkbox" name="cepes">
@@ -50,10 +54,11 @@
 								<span>Aux truffes</span>
 								<span>20€</span>
 							</label>
+							<i class="fas fa-check-circle"></i>
 						</div>
 					</fieldset>
 					<fieldset>
-						<legend>plats</legend> <!-- Forcer la maj avec CSS -->
+						<legend>plats</legend>
 						<div class="card">
 							<input type="checkbox" name="poulet">
 							<label>
@@ -61,6 +66,7 @@
 								<span>Et sa crème de truffe</span>
 								<span>40€</span>
 							</label>
+							<i class="fas fa-check-circle"></i>
 						</div>
 						<div class="card">
 							<input type="checkbox" name="langouste">
@@ -69,6 +75,7 @@
 								<span>Et ses légumes de saison</span>
 								<span>35€</span>
 							</label>
+							<i class="fas fa-check-circle"></i>
 						</div>
 						<div class="card">
 							<input type="checkbox" name="boeuf">
@@ -77,10 +84,11 @@
 								<span>Et sa purée de panais</span>
 								<span>44€</span>
 							</label>
+							<i class="fas fa-check-circle"></i>
 						</div>
 					</fieldset>
 					<fieldset>
-						<legend>desserts</legend> <!-- Forcer la maj avec CSS -->
+						<legend>desserts</legend>
 						<div class="card">
 							<input type="checkbox" name="farandole">
 							<label>
@@ -88,6 +96,7 @@
 								<span>Du chef</span>
 								<span>18€</span>
 							</label>
+							<i class="fas fa-check-circle"></i>
 						</div>
 						<div class="card">
 							<input type="checkbox" name="creme">
@@ -96,6 +105,7 @@
 								<span>Revisitée</span>
 								<span>22€</span>
 							</label>
+							<i class="fas fa-check-circle"></i>
 						</div>
 						<div class="card">
 							<input type="checkbox" name="tiramisu">
@@ -104,9 +114,12 @@
 								<span>À la noisette</span>
 								<span>23€</span>
 							</label>
+							<i class="fas fa-check-circle"></i>
 						</div>
 					</fieldset>
-					<button type="submit" class="btn">Commander</button>
+					<div class="button">
+						<button type="submit" class="btn">Commander</button>
+					</div>
 				</form>
 			</div>
 		</main>
