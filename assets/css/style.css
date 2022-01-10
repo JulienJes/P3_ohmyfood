@@ -3,6 +3,7 @@
 
 */
 /* ---------------------------- Variables ---------------------------- */
+/* ---------------------------- Mixins ---------------------------- */
 /* ---------------------------- Global ---------------------------- */
 * {
   box-sizing: border-box; }
@@ -37,8 +38,20 @@ h1, h2, h4 {
   padding: 0.5em 0;
   color: white;
   background: linear-gradient(#FF79DA, #9356DC);
+  box-shadow: 0 0.2em 0.5em grey;
   margin: 1em auto;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: background-color 200ms; }
+  .btn::after {
+    content: "";
+    display: block;
+    opacity: 0;
+    transition: opacity 200ms; }
+  .btn:hover {
+    background: #fface8;
+    box-shadow: 0 0.2em 1em 3px grey; }
+    .btn:hover::after {
+      opacity: 1; }
 
 ul {
   list-style: none;
@@ -47,18 +60,9 @@ ul {
 a {
   color: unset;
   text-decoration: none; }
-  a:hover {
-    color: #9356DC; }
-    a:hover .far .fas {
-      color: black; }
 
 img {
   object-fit: cover; }
-
-legend:after {
-  content: "";
-  border-bottom: 3px solid #99E2D0;
-  width: 20px; }
 
 /*input:after{
 	content:"\f3c5";
@@ -228,6 +232,11 @@ legend:after {
   padding: unset; }
   #carte fieldset legend {
     text-transform: uppercase; }
+    #carte fieldset legend:after {
+      content: "";
+      border-bottom: 3px solid #99E2D0;
+      width: 50%;
+      display: block; }
   #carte fieldset .card {
     display: flex;
     justify-content: space-between;
@@ -263,6 +272,8 @@ footer {
   background-color: #353535; }
   footer a {
     color: white; }
+    footer a:hover {
+      color: #9356DC; }
   footer .fas {
     margin-right: 1em; }
   footer .fa-hands-helping {
@@ -274,6 +285,60 @@ footer {
   font-weight: unset; }
 
 /* ---------------------------- Tablettes ---------------------------- */
+@media screen and (min-width: 768px) {
+  .logo img {
+    width: 40%; }
+
+  #index {
+    display: flex;
+    flex-direction: column; }
+
+  #fonctionnement {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    #fonctionnement > div {
+      display: flex;
+      justify-content: space-between;
+      width: 100%; }
+      #fonctionnement > div .section__method {
+        flex-basis: 32%; }
+
+  #restaurants {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    #restaurants > div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly; }
+      #restaurants > div .card {
+        flex-basis: 40%; }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; } }
 /* ---------------------------- Desktop ---------------------------- */
+@media screen and (min-width: 992px) {
+  .logo img {
+    width: 20%; }
+
+  #index > div {
+    display: flex; }
+
+  #fonctionnement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F6F6F6;
+    width: 50%; }
+    #fonctionnement > div {
+      justify-content: unset;
+      flex-direction: column;
+      width: 50%; }
+
+  #restaurants {
+    width: 50%; } }
 
 /*# sourceMappingURL=style.css.map */

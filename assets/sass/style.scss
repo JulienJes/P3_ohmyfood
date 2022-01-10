@@ -9,6 +9,8 @@ $color-secondary: #FF79DA;
 $color-tertiary: #99E2D0;
 $color-background: #F6F6F6;
 
+/* ---------------------------- Mixins ---------------------------- */
+
 /* ---------------------------- Global ---------------------------- */
 *{
 	box-sizing: border-box;
@@ -51,8 +53,23 @@ h1, h2, h4{
 	padding: 0.5em 0;
 	color: white;
 	background: linear-gradient($color-secondary, $color-primary);
+	box-shadow: 0 0.2em 0.5em grey;
 	margin: 1em auto;
 	cursor: pointer;
+	transition: background-color 200ms;
+	&::after{
+		content:"";
+		display: block;
+		opacity: 0;
+		transition: opacity 200ms;
+	}
+	&:hover{
+		background: lighten($color-secondary, 10%);
+		box-shadow: 0 0.2em 1em 3px grey;
+		&::after{
+			opacity: 1;
+		}
+	}
 }
 
 ul{
@@ -63,22 +80,10 @@ ul{
 a{
 	color: unset;
 	text-decoration: none;
-	&:hover{
-		color: $color-primary;
-		& .far .fas{
-			color: black;
-		}
-	}
 }
 
 img{
 	object-fit: cover;
-}
-
-legend:after{
-	content:"";
-	border-bottom: 3px solid $color-tertiary;
-	width: 20px;
 }
 
 /*input:after{
@@ -292,6 +297,12 @@ legend:after{
 		padding: unset;
 		& legend{
 			text-transform: uppercase;
+			&:after{
+				content:"";
+				border-bottom: 3px solid $color-tertiary;
+				width: 50%;
+				display: block;
+			}
 		}
 		& .card{
 			display: flex;
@@ -344,6 +355,9 @@ footer{
 	background-color: #353535;
 	& a{
 		color: white;
+		&:hover{
+			color: $color-primary;
+		}
 	}
 	& .fas{
 		margin-right: 1em;
@@ -361,11 +375,81 @@ footer{
 /* ---------------------------- Tablettes ---------------------------- */
 
 @media screen and (min-width:768px){
+	.logo{
+		& img{
+		width: 40%;
+		}
+	}
+	
+	#index{
+		display: flex;
+		flex-direction: column;
+	}
 
+	#fonctionnement{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+		& > div{
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			& .section__method{
+				flex-basis: 32%;
+			}
+		}
+	}
+
+	#restaurants{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		& > div{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+			& .card{
+				flex-basis: 40%;
+			}
+		}
+	}
+
+	footer{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }
 
 /* ---------------------------- Desktop ---------------------------- */
 
 @media screen and (min-width:992px){
-	
+	.logo{
+		& img{
+		width: 20%;
+		}
+	}
+
+	#index{
+		& > div{
+			display: flex;
+		}
+	}
+
+	#fonctionnement{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: $color-background;
+		width: 50%;
+		> div{
+			justify-content: unset;
+			flex-direction: column;
+			width: 50%;
+		}
+	}
+
+	#restaurants{
+		width: 50%;
+	}
 }
