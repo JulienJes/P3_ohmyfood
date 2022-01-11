@@ -1,6 +1,8 @@
 @charset "UTF-8";
 /* To-do list ----------------------------
-
+Loader
+Responsive menu
+Animations
 */
 /* ---------------------------- Variables ---------------------------- */
 /* ---------------------------- Mixins ---------------------------- */
@@ -241,6 +243,7 @@ img {
     display: flex;
     justify-content: space-between;
     padding: 0.5em 1em;
+    box-shadow: 0 0.2em 0.5em grey;
     /*cursor: pointer; ne marche pas bien*/ }
     #carte fieldset .card input {
       display: none; }
@@ -298,11 +301,7 @@ footer {
     flex-direction: column;
     align-items: center; }
     #fonctionnement > div {
-      display: flex;
-      justify-content: space-between;
-      width: 100%; }
-      #fonctionnement > div .section__method {
-        flex-basis: 32%; }
+      width: 40%; }
 
   #restaurants {
     display: flex;
@@ -315,30 +314,56 @@ footer {
       #restaurants > div .card {
         flex-basis: 40%; }
 
+  .logo i {
+    left: 3em; }
+
+  #carte fieldset .card {
+    margin-left: 2em;
+    margin-right: 2em; }
+
   footer {
     display: flex;
-    flex-direction: column;
-    align-items: center; } }
+    align-items: center;
+    justify-content: space-evenly; } }
 /* ---------------------------- Desktop ---------------------------- */
 @media screen and (min-width: 992px) {
+  .container {
+    max-width: 1400px;
+    margin: auto; }
+
   .logo img {
     width: 20%; }
 
-  #index > div {
-    display: flex; }
-
-  #fonctionnement {
+  #fonctionnement > div {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #F6F6F6;
-    width: 50%; }
-    #fonctionnement > div {
-      justify-content: unset;
-      flex-direction: column;
-      width: 50%; }
+    justify-content: space-around;
+    width: 100%; }
+    #fonctionnement > div .section__method {
+      flex-basis: 31%; }
 
-  #restaurants {
-    width: 50%; } }
+  .card img {
+    height: 14em; }
+
+  .logo i {
+    left: 9em; }
+
+  #carte {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    #carte fieldset {
+      flex-basis: 32%; }
+      #carte fieldset + fieldset {
+        margin-left: 1em; }
+      #carte fieldset .card {
+        margin-left: unset;
+        margin-right: unset; }
+
+  footer {
+    flex-direction: column; }
+    footer nav ul {
+      display: flex; }
+      footer nav ul li {
+        margin: 0 1em; } }
 
 /*# sourceMappingURL=style.css.map */
