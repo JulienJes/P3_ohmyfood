@@ -1,7 +1,7 @@
 /* To-do list ----------------------------
 Loader
 Animations
-Remplacer texte
+Remplacer texte dans html
 */
 
 /* ---------------------------- Variables ---------------------------- */
@@ -10,6 +10,7 @@ $color-primary: #9356DC;
 $color-secondary: #FF79DA;
 $color-tertiary: #99E2D0;
 $color-background: #F6F6F6;
+$color-bg-footer: #353535;
 
 /* ---------------------------- Mixins ---------------------------- */
 
@@ -249,6 +250,7 @@ img{
 	border-radius: 0.15em;
 	background-color: $color-tertiary;
 	color: #008766;
+	color: darken($color-tertiary,48%) saturate($color-tertiary,44%);
 	padding: 0 0.8em;
 	font-weight: bold;
 	position: absolute; right: 1em; top: 1em;
@@ -326,7 +328,6 @@ img{
 				}
 			}
 			&__check{
-				
 				& i{
 					color: white;
 					background-color: $color-tertiary;
@@ -355,7 +356,7 @@ img{
 /* ---------------------------- Footer ---------------------------- */
 
 footer{
-	background-color: #353535;
+	background-color: $color-bg-footer;
 	& a{
 		color: white;
 		&:hover{
@@ -412,12 +413,25 @@ footer{
 		}
 	}
 
-	.logo i {
+	.logo i{
 		left: 3em;
+	}
+
+	.menu__title{
+		padding: 0 2em;
+		& i{
+			right: 2em;
+		}
 	}
 
 	#carte{
 		& fieldset{
+			& legend{
+				text-align: center;
+				&::after{
+					width: 100%;
+				}
+			}
 			& .card{
 				margin-left: 2em;
     			margin-right: 2em;
@@ -446,6 +460,13 @@ footer{
 		}
 	}
 
+	.menu__title{
+		padding: unset;
+		& i{
+			right: 1em;
+		}
+	}
+
 	#fonctionnement{
 		& > div{
 			display: flex;
@@ -471,6 +492,12 @@ footer{
    		justify-content: center;
 		& fieldset{
 			flex-basis: 32%;
+			& legend{
+				text-align: unset;
+				&::after{
+					width: 50%;
+				}
+			}
 			& + fieldset{
 				margin-left: 1em
 			}

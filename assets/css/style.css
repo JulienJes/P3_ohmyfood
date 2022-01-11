@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /* To-do list ----------------------------
 Loader
-Responsive menu
 Animations
+Remplacer texte dans html
 */
 /* ---------------------------- Variables ---------------------------- */
 /* ---------------------------- Mixins ---------------------------- */
@@ -190,6 +190,7 @@ img {
   border-radius: 0.15em;
   background-color: #99E2D0;
   color: #008766;
+  color: #1e6856 #7cffdf;
   padding: 0 0.8em;
   font-weight: bold;
   position: absolute;
@@ -317,6 +318,15 @@ footer {
   .logo i {
     left: 3em; }
 
+  .menu__title {
+    padding: 0 2em; }
+    .menu__title i {
+      right: 2em; }
+
+  #carte fieldset legend {
+    text-align: center; }
+    #carte fieldset legend::after {
+      width: 100%; }
   #carte fieldset .card {
     margin-left: 2em;
     margin-right: 2em; }
@@ -333,6 +343,11 @@ footer {
 
   .logo img {
     width: 20%; }
+
+  .menu__title {
+    padding: unset; }
+    .menu__title i {
+      right: 1em; }
 
   #fonctionnement > div {
     display: flex;
@@ -353,6 +368,10 @@ footer {
     justify-content: center; }
     #carte fieldset {
       flex-basis: 32%; }
+      #carte fieldset legend {
+        text-align: unset; }
+        #carte fieldset legend::after {
+          width: 50%; }
       #carte fieldset + fieldset {
         margin-left: 1em; }
       #carte fieldset .card {
