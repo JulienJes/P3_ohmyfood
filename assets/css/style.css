@@ -1,8 +1,10 @@
 @charset "UTF-8";
 /* To-do list ----------------------------
+Mixins
 Loader
 Animations
-Remplacer texte dans html
+Superposition coeurs
+Bien placer checks et les links
 */
 /* ---------------------------- Variables ---------------------------- */
 /* ---------------------------- Mixins ---------------------------- */
@@ -23,7 +25,8 @@ h1, h2, h4 {
   font-family: 'Shrikhand', sans-serif; }
 
 .container {
-  overflow-anchor: none; }
+  overflow-anchor: none;
+  position: relative; }
 
 #fonctionnement, #restaurants, footer {
   padding: 1em 1em; }
@@ -42,18 +45,28 @@ h1, h2, h4 {
   background: linear-gradient(#FF79DA, #9356DC);
   box-shadow: 0 0.2em 0.5em grey;
   margin: 1em auto;
-  cursor: pointer;
-  transition: background-color 200ms; }
+  position: relative;
+  z-index: 1;
+  cursor: pointer; }
   .btn::after {
     content: "";
     display: block;
     opacity: 0;
     transition: opacity 200ms; }
-  .btn:hover {
-    background: #fface8;
-    box-shadow: 0 0.2em 1em 3px grey; }
-    .btn:hover::after {
-      opacity: 1; }
+  .btn:hover::after {
+    opacity: 1; }
+  .btn::after {
+    content: "";
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(#fface8, lighten #9356DC, 10%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 250ms; }
 
 ul {
   list-style: none;
@@ -70,6 +83,46 @@ img {
 	content:"\f3c5";
 	font-family: "Font Awesome 5 Free";
 }*/
+/* ---------------------------- Loader ---------------------------- */
+.loader {
+  width: 100%;
+  height: 100vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: loader 1000ms 10000ms ease-in-out forwards; }
+  .loader .word {
+    font-family: 'Shrikhand', sans-serif;
+    font-size: 4em;
+    animation: words 1000ms; }
+    .loader .word--1 {
+      animation-delay: 333.3333333333ms; }
+    .loader .word--2 {
+      animation-delay: 666.6666666667ms; }
+    .loader .word--3 {
+      animation-delay: 1000ms; }
+
+@keyframes loader {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden; } }
+/* ---------------------------- Apparition index ---------------------------- */
+.index {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  animation: index 1000ms 1000ms linear forwards; }
+
+@keyframes index {
+  100% {
+    height: 100%;
+    visibility: visible;
+    overflow: visible; } }
 /* ---------------------------- Header ---------------------------- */
 .logo {
   margin: 1em 0; }
@@ -214,7 +267,7 @@ img {
   z-index: 1;
   width: 100%;
   position: relative;
-  bottom: 4em; }
+  margin-top: -3em; }
   .menu__title {
     display: flex;
     align-items: center; }
@@ -244,7 +297,7 @@ img {
     display: flex;
     justify-content: space-between;
     padding: 0.5em 1em;
-    box-shadow: 0 0.2em 0.5em grey;
+    box-shadow: 0 1px 5px grey;
     /*cursor: pointer; ne marche pas bien*/ }
     #carte fieldset .card input {
       display: none; }
@@ -257,8 +310,8 @@ img {
           font-weight: unset; }
     #carte fieldset .card__check i {
       color: white;
-      background-color: #99E2D0;
       padding: 1em 1.5em;
+      background-color: #99E2D0;
       border-top-right-radius: 1em;
       border-bottom-right-radius: 1em; }
     #carte fieldset .card__price {
@@ -334,11 +387,13 @@ footer {
   footer {
     display: flex;
     align-items: center;
-    justify-content: space-evenly; } }
+    justify-content: space-evenly; }
+
+  .title__footer {
+    font-size: 1.5em; } }
 /* ---------------------------- Desktop ---------------------------- */
 @media screen and (min-width: 992px) {
   .container {
-    max-width: 1400px;
     margin: auto; }
 
   .logo img {
@@ -357,7 +412,7 @@ footer {
       flex-basis: 31%; }
 
   .card img {
-    height: 14em; }
+    height: 18em; }
 
   .logo i {
     left: 9em; }

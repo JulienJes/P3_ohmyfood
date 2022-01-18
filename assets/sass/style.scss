@@ -1,7 +1,9 @@
 /* To-do list ----------------------------
+Mixins
 Loader
 Animations
-Remplacer texte dans html
+Superposition coeurs
+Bien placer checks et les links
 */
 
 /* ---------------------------- Variables ---------------------------- */
@@ -11,6 +13,8 @@ $color-secondary: #FF79DA;
 $color-tertiary: #99E2D0;
 $color-background: #F6F6F6;
 $color-bg-footer: #353535;
+$color-btn-bg-primary: lighten($color-primary, 30%);
+$color-btn-bg-secondary: lighten($color-secondary, 30%);
 
 /* ---------------------------- Mixins ---------------------------- */
 
@@ -36,6 +40,7 @@ h1, h2, h4{
 
 .container{
 	overflow-anchor: none;
+	position: relative;
 }
 
 #fonctionnement, #restaurants, footer{
@@ -58,8 +63,9 @@ h1, h2, h4{
 	background: linear-gradient($color-secondary, $color-primary);
 	box-shadow: 0 0.2em 0.5em grey;
 	margin: 1em auto;
+	position: relative;
+	z-index: 1;
 	cursor: pointer;
-	transition: background-color 200ms;
 	&::after{
 		content:"";
 		display: block;
@@ -67,12 +73,23 @@ h1, h2, h4{
 		transition: opacity 200ms;
 	}
 	&:hover{
-		background: lighten($color-secondary, 10%);
-		box-shadow: 0 0.2em 1em 3px grey;
-		&::after{
-			opacity: 1;
-		}
-	}
+        &::after{
+            opacity: 1;
+        }
+    }
+    &::after{
+		content: "";
+		border-radius: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(lighten($color-secondary, 10%), lighten ($color-primary, 10%));
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 250ms;
+    }
 }
 
 ul{
@@ -94,8 +111,65 @@ img{
 	font-family: "Font Awesome 5 Free";
 }*/
 
-/* ---------------------------- Header ---------------------------- */
+/* ---------------------------- Loader ---------------------------- */
 
+$num-words: 3;
+$anim-dur: 3000ms;
+$anim-delay: $anim-dur / $num-words;
+
+.loader{
+	width: 100%;
+	height: 100vh;
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: loader 1000ms 50000ms ease-in-out forwards;
+	& .word{
+		font-family: 'Shrikhand', sans-serif;
+		font-size: 4em;
+		animation: words $anim-dur;
+		@for $i from 1 through $num-words{
+            &--#{$i}{
+                animation-delay: $anim-delay * $i;
+             }
+        }
+	}
+}
+
+@keyframes loader {
+	0%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+		height: 0;
+		visibility: hidden;
+		overflow: hidden;
+	}
+}
+
+
+
+/* ---------------------------- Apparition index ---------------------------- */
+
+.index{
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+	animation: index 1000ms 1000ms linear forwards;
+}
+
+@keyframes index {
+	100%{
+		height: 100%;
+		visibility: visible;
+		overflow: visible;
+	}
+}
+
+
+/* ---------------------------- Header ---------------------------- */
 .logo{
 	margin: 1em 0;
 	& a{
@@ -113,7 +187,6 @@ img{
 }
 
 /* ---------------------------- Réservation ---------------------------- */
-
 #explorer{
 	display: flex;
 	flex-direction: column;
@@ -165,11 +238,6 @@ img{
 }
 
 /* ---------------------------- Fonctionnement ---------------------------- */
-
-#fonctionnement{
-
-}
-
 .section__method{
 	display: flex;
 	flex-wrap: wrap;
@@ -208,11 +276,6 @@ img{
 }
 
 /* ---------------------------- Restaurants ---------------------------- */
-
-#restaurants{
-
-}
-
 .card{
 	border-radius: 1em;
 	background-color: white;
@@ -257,7 +320,6 @@ img{
 }
 
 /* ---------------------------- Menus ---------------------------- */
-
 .cover{
 	display: block;
 	position: relative;
@@ -276,7 +338,7 @@ img{
 	z-index: 1;
 	width: 100%;
 	position: relative;
-	bottom: 4em;
+	margin-top: -3em;
 	&__title{
 		display: flex;
 		align-items: center;
@@ -312,7 +374,7 @@ img{
 			display: flex;
    			justify-content: space-between;
 			padding: 0.5em 1em;
-			box-shadow: 0 0.2em 0.5em grey;
+			box-shadow: 0 1px 5px grey;
 			/*cursor: pointer; ne marche pas bien*/
 			& input{
 				display: none;
@@ -327,11 +389,11 @@ img{
 					}
 				}
 			}
-			&__check{
+			&__check{	
 				& i{
 					color: white;
-					background-color: $color-tertiary;
 					padding: 1em 1.5em;
+					background-color: $color-tertiary;
 					border-top-right-radius: 1em;
 					border-bottom-right-radius: 1em;
 				}
@@ -354,7 +416,6 @@ img{
 }
 
 /* ---------------------------- Footer ---------------------------- */
-
 footer{
 	background-color: $color-bg-footer;
 	& a{
@@ -377,7 +438,6 @@ footer{
 }
 
 /* ---------------------------- Tablettes ---------------------------- */
-
 @media screen and (min-width:768px){
 	.logo{
 		& img{
@@ -444,13 +504,15 @@ footer{
 		align-items: center;
 		justify-content: space-evenly;
 	}
+
+	.title__footer{
+		font-size: 1.5em;
+	}
 }
 
 /* ---------------------------- Desktop ---------------------------- */
-
 @media screen and (min-width:992px){
 	.container{
-		max-width: 1400px;
 		margin: auto;
 	}
 	
@@ -479,7 +541,7 @@ footer{
 	}
 
 	.card img{
-		height: 14em;
+		height: 18em;
 	}
 
 	.logo i{
