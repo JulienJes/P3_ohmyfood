@@ -25,6 +25,11 @@ $anim-delay: $anim-dur / $num-words;
 
 /* ---------------------------- Mixins ---------------------------- */
 
+@mixin emptyafter {
+	content: ".";
+	font-size: 0;
+}
+
 @mixin formatcard{
 		border-radius: 1em;
 		background-color: white;
@@ -54,7 +59,6 @@ h1, h2, h4{
 }
 
 .container{
-	overflow-anchor: none;
 	position: relative;
 }
 
@@ -82,7 +86,7 @@ h1, h2, h4{
 	z-index: 1;
 	cursor: pointer;
 	&::after{
-		content:"";
+		@include emptyafter;
 		display: block;
 		opacity: 0;
 		transition: opacity 500ms;
@@ -93,7 +97,7 @@ h1, h2, h4{
         }
     }
     &::after{
-		content: "";
+		@include emptyafter;
 		border-radius: 30px;
         position: absolute;
         top: 0;
@@ -101,7 +105,7 @@ h1, h2, h4{
         bottom: 0;
         left: 0;
         background: linear-gradient($color-btn-bg-secondary, $color-btn-bg-primary);
-        box-shadow: 0 0 16px black;
+        box-shadow: 0 3px 6px black;
 		opacity: 0;
         z-index: -1;
     }
@@ -191,6 +195,7 @@ img{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	overflow-y: hidden;
 	animation: loader 1000ms $anim-dur+1000ms ease-in-out forwards;
 	& .word{
 		font-family: 'Shrikhand', sans-serif;
@@ -200,7 +205,7 @@ img{
 		animation: words $anim-dur forwards;
 		@for $i from 1 through $num-words{
             &--#{$i}{
-                animation-delay: $anim-delay * $i;
+                animation-delay: $anim-delay*$i;
              }
         }
 	}
@@ -233,7 +238,7 @@ img{
 	height: 80px;
 }
   .lds-dual-ring:after{
-	content: " ";
+	@include emptyafter;
 	display: block;
 	width: 64px;
 	height: 64px;
@@ -483,7 +488,7 @@ img{
 		& legend{
 			text-transform: uppercase;
 			&:after{
-				content:"";
+				@include emptyafter;
 				border-bottom: 3px solid $color-tertiary;
 				width: 50%;
 				display: block;
@@ -501,8 +506,13 @@ img{
 			}
 			&__dish{
 				display: flex;
-				flex-direction: column;
+				flex-direction: column;	
 				margin: 8px 0 8px 16px;
+				& > span{
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
 				&--meal{
 					font-weight: bold;
 				}
@@ -521,6 +531,7 @@ img{
 					position: absolute;
  					right: 0;
 					bottom: 0;
+					visibility: hidden;
 				& i{
 					font-size: 2em;
 					color: white;
@@ -627,14 +638,13 @@ footer{
 	#carte{
 		& fieldset{
 			& legend{
-				text-align: center;
 				&::after{
+					@include emptyafter;
 					width: 100%;
 				}
 			}
 			& .card{
-				margin-left: 2em;
-    			margin-right: 2em;
+				margin: 1em 2em;
 			}
 		}
 	}
@@ -701,6 +711,7 @@ footer{
 			& legend{
 				text-align: unset;
 				&::after{
+					@include emptyafter;
 					width: 50%;
 				}
 			}

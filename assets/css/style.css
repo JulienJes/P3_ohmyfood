@@ -29,7 +29,6 @@ h1, h2, h4 {
 }
 
 .container {
-  overflow-anchor: none;
   position: relative;
 }
 
@@ -61,7 +60,8 @@ h1, h2, h4 {
 }
 
 .btn::after {
-  content: "";
+  content: ".";
+  font-size: 0;
   display: block;
   opacity: 0;
   -webkit-transition: opacity 500ms;
@@ -73,7 +73,8 @@ h1, h2, h4 {
 }
 
 .btn::after {
-  content: "";
+  content: ".";
+  font-size: 0;
   border-radius: 30px;
   position: absolute;
   top: 0;
@@ -82,8 +83,8 @@ h1, h2, h4 {
   left: 0;
   background: -webkit-gradient(linear, left top, left bottom, from(#ff93e1), to(#a16be0));
   background: linear-gradient(#ff93e1, #a16be0);
-  -webkit-box-shadow: 0 0 16px black;
-          box-shadow: 0 0 16px black;
+  -webkit-box-shadow: 0 3px 6px black;
+          box-shadow: 0 3px 6px black;
   opacity: 0;
   z-index: -1;
 }
@@ -198,6 +199,7 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow-y: hidden;
   -webkit-animation: loader 1000ms 4000ms ease-in-out forwards;
           animation: loader 1000ms 4000ms ease-in-out forwards;
 }
@@ -278,7 +280,8 @@ img {
 }
 
 .lds-dual-ring:after {
-  content: " ";
+  content: ".";
+  font-size: 0;
   display: block;
   width: 64px;
   height: 64px;
@@ -635,7 +638,8 @@ img {
 }
 
 #carte fieldset legend:after {
-  content: "";
+  content: ".";
+  font-size: 0;
   border-bottom: 3px solid #99E2D0;
   width: 50%;
   display: block;
@@ -675,6 +679,12 @@ img {
   margin: 8px 0 8px 16px;
 }
 
+#carte fieldset .card__dish > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 #carte fieldset .card__dish--meal {
   font-weight: bold;
 }
@@ -699,6 +709,7 @@ img {
   position: absolute;
   right: 0;
   bottom: 0;
+  visibility: hidden;
 }
 
 #carte fieldset .card__check i {
@@ -838,15 +849,13 @@ footer .fa-hands-helping {
   .menu__title i {
     right: 2em;
   }
-  #carte fieldset legend {
-    text-align: center;
-  }
   #carte fieldset legend::after {
+    content: ".";
+    font-size: 0;
     width: 100%;
   }
   #carte fieldset .card {
-    margin-left: 2em;
-    margin-right: 2em;
+    margin: 1em 2em;
   }
   footer {
     display: -webkit-box;
@@ -915,6 +924,8 @@ footer .fa-hands-helping {
     text-align: unset;
   }
   #carte fieldset legend::after {
+    content: ".";
+    font-size: 0;
     width: 50%;
   }
   #carte fieldset + fieldset {
