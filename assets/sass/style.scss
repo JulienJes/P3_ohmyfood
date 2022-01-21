@@ -1,22 +1,37 @@
 /* To-do list ----------------------------
-Mixins
-Loader
-Animations
-Superposition coeurs
-Bien placer checks et les links
+Mixins (en trouver d'autres)
+Animations (coeurs à finir;
+plats;
+check;)
 */
 
 /* ---------------------------- Variables ---------------------------- */
+
+//Couleurs
 
 $color-primary: #9356DC;
 $color-secondary: #FF79DA;
 $color-tertiary: #99E2D0;
 $color-background: #F6F6F6;
-$color-bg-footer: #353535;
-$color-btn-bg-primary: lighten($color-primary, 30%);
-$color-btn-bg-secondary: lighten($color-secondary, 30%);
+$color-bg-footer-loader: #353535;
+$color-btn-bg-primary: lighten($color-primary, 5%);
+$color-btn-bg-secondary: lighten($color-secondary, 5%);
+
+//Animations
+
+$num-words: 3;
+$anim-dur: 3000ms;
+$anim-delay: $anim-dur / $num-words;
 
 /* ---------------------------- Mixins ---------------------------- */
+
+@mixin formatcard{
+		border-radius: 1em;
+		background-color: white;
+		box-shadow: 0 1px 5px grey;
+		margin: 1em 0;
+		position: relative;
+}
 
 /* ---------------------------- Global ---------------------------- */
 *{
@@ -61,7 +76,7 @@ h1, h2, h4{
 	padding: 0.5em 0;
 	color: white;
 	background: linear-gradient($color-secondary, $color-primary);
-	box-shadow: 0 0.2em 0.5em grey;
+	box-shadow: 0 0 16px grey;
 	margin: 1em auto;
 	position: relative;
 	z-index: 1;
@@ -70,7 +85,7 @@ h1, h2, h4{
 		content:"";
 		display: block;
 		opacity: 0;
-		transition: opacity 200ms;
+		transition: opacity 500ms;
 	}
 	&:hover{
         &::after{
@@ -85,10 +100,10 @@ h1, h2, h4{
         right: 0;
         bottom: 0;
         left: 0;
-        background: linear-gradient(lighten($color-secondary, 10%), lighten ($color-primary, 10%));
-        opacity: 0;
+        background: linear-gradient($color-btn-bg-secondary, $color-btn-bg-primary);
+        box-shadow: 0 0 16px black;
+		opacity: 0;
         z-index: -1;
-        transition: opacity 250ms;
     }
 }
 
@@ -106,29 +121,83 @@ img{
 	object-fit: cover;
 }
 
-/*input:after{
-	content:"\f3c5";
-	font-family: "Font Awesome 5 Free";
+/*.fa-heart{
+	-webkit-text-fill-color: white;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: black;
+	cursor: pointer;
+	&:hover{
+		animation: heart 1500ms ease-out forwards;
+	}
+}
+
+@keyframes heart{
+	0%{
+	background: linear-gradient($color-primary, $color-secondary);
+	background-clip: text;
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    -webkit-text-stroke: unset;
+	}
+	100%{
+		background: linear-gradient($color-secondary, $color-primary);
+		background-clip: text;
+		-webkit-background-clip: text;
+    	-webkit-text-fill-color: transparent;
+   		opacity: 1;
+    	-webkit-text-stroke: unset;
+	}
 }*/
 
-/* ---------------------------- Loader ---------------------------- */
+.heart{
+	cursor: pointer;
+		& .fas{
+			visibility: hidden;
+		}
+		&:hover{
+			& .far{
+				animation: heart-out 100ms ease-in-out 0s forwards;
+			/*& .fas{
+				cursor: pointer;
+				animation: heart-in 200ms ease-in-out 0s;
+			}*/
+		}
+	}
+}
+@keyframes heart-out {
+	0%{
+		visibility: visible;
+	}
+	100%{
+		visibility: hidden;
+	}
+}
+@keyframes heart-in {
+	0%{
+		visibility: hidden;
+	}
+	100%{
+		visibility: visible;
+	}
+}
 
-$num-words: 3;
-$anim-dur: 3000ms;
-$anim-delay: $anim-dur / $num-words;
+/* ---------------------------- Loader ---------------------------- */
 
 .loader{
 	width: 100%;
 	height: 100vh;
-	background: white;
+	background: $color-bg-footer-loader;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	animation: loader 1000ms 50000ms ease-in-out forwards;
+	animation: loader 1000ms $anim-dur+1000ms ease-in-out forwards;
 	& .word{
 		font-family: 'Shrikhand', sans-serif;
 		font-size: 4em;
-		animation: words $anim-dur;
+		color: white;
+		visibility: hidden;
+		animation: words $anim-dur forwards;
 		@for $i from 1 through $num-words{
             &--#{$i}{
                 animation-delay: $anim-delay * $i;
@@ -136,7 +205,6 @@ $anim-delay: $anim-dur / $num-words;
         }
 	}
 }
-
 @keyframes loader {
 	0%{
 		opacity: 1;
@@ -148,8 +216,45 @@ $anim-delay: $anim-dur / $num-words;
 		overflow: hidden;
 	}
 }
+@keyframes words{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+		visibility: unset;
+	}
+}
 
-
+.lds-dual-ring{
+	position: absolute;
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+}
+  .lds-dual-ring:after{
+	content: " ";
+	display: block;
+	width: 64px;
+	height: 64px;
+	margin: 8px;
+	border-radius: 50%;
+	border: 6px solid white;
+	border-color: white transparent white transparent;
+	animation: lds-dual-ring 1.2s linear 800ms forwards;
+}
+  @keyframes lds-dual-ring{
+	0% {
+	  transform: rotate(0deg);
+	}
+	70%{
+		opacity: 1;
+	}
+	100% {
+	  transform: rotate(360deg);
+	  opacity: 0;
+	}
+}
 
 /* ---------------------------- Apparition index ---------------------------- */
 
@@ -157,7 +262,7 @@ $anim-delay: $anim-dur / $num-words;
 	width: 100%;
 	height: 0;
 	overflow: hidden;
-	animation: index 1000ms 1000ms linear forwards;
+	animation: index 1000ms 3500ms linear forwards;
 }
 
 @keyframes index {
@@ -244,7 +349,8 @@ $anim-delay: $anim-dur / $num-words;
 	background-color: $color-background;
 	border-radius: 1em;
 	margin: 1em 0;
-	box-shadow: 0 0.2em 0.5em grey;
+	box-shadow: 0 0.2em 0.5em lightgrey;
+	transition: 300ms;
 		& span{
 		display: flex;
 		align-items: center;
@@ -257,7 +363,7 @@ $anim-delay: $anim-dur / $num-words;
 		position: relative;
 		left: -0.625em;
 		margin-top: 1em;
-		padding-top: 3px;
+		padding-top: 2px;
 		}
 		& i{
 			margin-top: 1.3em;
@@ -276,50 +382,67 @@ $anim-delay: $anim-dur / $num-words;
 }
 
 /* ---------------------------- Restaurants ---------------------------- */
-.card{
-	border-radius: 1em;
-	background-color: white;
-	margin: 1em 0;
-	position: relative;
-	& a{
-		display: block;
+#restaurants{
+	& > div > .card:hover{
+		transform: scale(1.02);
 	}
-	& img{
-		width: 100%;
-		height: 10em;
-		border-top-left-radius: 1em;
-		border-top-right-radius: 1em;
-	}
-	&-body{
-		padding: 0 1em 0.5em 1em;
-	}
-	& h3,& p{
-		  margin: 0;
-	  }
-	& .fas{
-		color: $color-primary;
-		visibility: hidden;
-		&:hover{
-			visibility: unset;
+	& .card{
+		@include formatcard;
+		transition: transform 250ms ease-in-out;
+		& a{
+			display: block;
+		}
+		& img{
+			width: 100%;
+			height: 10em;
+			border-top-left-radius: 1em;
+			border-top-right-radius: 1em;
+		}
+		&-body{
+			padding: 0 1em 0.5em 1em;
+		}
+		& h3,& p{
+			margin: 0;
+		}
+		& .fas{
+			background: linear-gradient($color-primary, $color-secondary);
+			background-clip: text;
+			color: transparent;
+			visibility: hidden;
+			&:hover{
+				visibility: unset;
+			}
+		}
+		& i{
+			font-size: 1.5em;
+			position: absolute;
+			right: 1em;
+			bottom: 1em;
 		}
 	}
-	& i{
-		font-size: 1.5em;
-		position: absolute; right: 1em; bottom: 1em;
+	.new{
+		border-radius: 0.15em;
+		background-color: $color-tertiary;
+		color: #008766;
+		color: darken($color-tertiary,48%) saturate($color-tertiary,44%);
+		padding: 0 0.8em;
+		font-weight: bold;
+		position: absolute; right: 1em; top: 1em;
 	}
-}
-
-.new{
-	border-radius: 0.15em;
-	background-color: $color-tertiary;
-	color: #008766;
-	color: darken($color-tertiary,48%) saturate($color-tertiary,44%);
-	padding: 0 0.8em;
-	font-weight: bold;
-	position: absolute; right: 1em; top: 1em;
 }
 
 /* ---------------------------- Menus ---------------------------- */
+.logo{
+	&:hover{
+		& i{
+		transition: 200ms;
+		background: linear-gradient($color-primary, $color-secondary);
+		background-clip: text;
+		color: transparent;
+		}
+	}
+}
+
 .cover{
 	display: block;
 	position: relative;
@@ -342,12 +465,8 @@ $anim-delay: $anim-dur / $num-words;
 	&__title{
 		display: flex;
 		align-items: center;
-		& .fas{
-			color: $color-primary;
-			visibility: hidden;
-			&:hover{
-				visibility: unset;
-			}
+		& h1{
+			padding-right: 1.8em;
 		}
 		& i{
 		font-size: 2em;
@@ -373,36 +492,45 @@ $anim-delay: $anim-dur / $num-words;
 		& .card{
 			display: flex;
    			justify-content: space-between;
-			padding: 0.5em 1em;
-			box-shadow: 0 1px 5px grey;
-			/*cursor: pointer; ne marche pas bien*/
+			@include formatcard;
+			overflow: hidden;
+			cursor: pointer;
+			animation: dish-in 1000ms 1000ms ease-in-out forwards;
 			& input{
 				display: none;
 			}
-			&__meal{
-			display: flex;
-			flex-direction: column;
-				& label{
+			&__dish{
+				display: flex;
+				flex-direction: column;
+				margin: 8px 0 8px 16px;
+				&--meal{
 					font-weight: bold;
-					& ~ label{
-						font-weight: unset;
-					}
-				}
-			}
-			&__check{	
-				& i{
-					color: white;
-					padding: 1em 1.5em;
-					background-color: $color-tertiary;
-					border-top-right-radius: 1em;
-					border-bottom-right-radius: 1em;
 				}
 			}
 			&__price{
 				display: flex;
 				align-items: flex-end;
+				font-weight: bold;
+				margin: 0 16px 8px 0;
 				& label{
 					font-weight: bold;
+				}
+			}
+			&__check{
+				    padding-left: 1em;
+					position: absolute;
+ 					right: 0;
+					bottom: 0;
+				& i{
+					font-size: 2em;
+					color: white;
+					padding: 21px 30px;
+					background-color: $color-tertiary;
+					border-top-right-radius: 15px;
+					border-bottom-right-radius: 15px;
+					position: unset;
+ 					right: unset;
+					bottom: unset;
 				}
 			}
 		}
@@ -415,9 +543,21 @@ $anim-delay: $anim-dur / $num-words;
 	}	
 }
 
+@keyframes dish-in {
+	0%{
+		opacity: 0;
+		height: 0;
+		visibility: hidden;
+	}
+	100%{
+		opacity: 1;
+		visibility: unset;
+	}
+}
+
 /* ---------------------------- Footer ---------------------------- */
 footer{
-	background-color: $color-bg-footer;
+	background-color: $color-bg-footer-loader;
 	& a{
 		color: white;
 		&:hover{
@@ -428,7 +568,7 @@ footer{
 		margin-right: 1em;
 	}
 	& .fa-hands-helping{
-		font-size:0.8em; /* bonne méthode??? */
+		font-size:0.8em;
 	}
 }
 
@@ -440,6 +580,10 @@ footer{
 /* ---------------------------- Tablettes ---------------------------- */
 @media screen and (min-width:768px){
 	.logo{
+		& i{
+			font-size: 1.3em;
+			left: 3em;
+		}
 		& img{
 		width: 40%;
 		}
@@ -471,11 +615,7 @@ footer{
 				flex-basis: 40%;
 			}
 		}
-	}
-
-	.logo i{
-		left: 3em;
-	}
+	}	
 
 	.menu__title{
 		padding: 0 2em;
@@ -517,6 +657,10 @@ footer{
 	}
 	
 	.logo{
+		& i{
+			font-size: 1.5em;
+			left: 4em;
+		}
 		& img{
 			width: 20%;
 		}
@@ -540,12 +684,12 @@ footer{
 		}
 	}
 
-	.card img{
-		height: 18em;
-	}
-
-	.logo i{
-		left: 9em;
+	#restaurants{
+		& .card{
+			& img{
+				height: 18em;
+			}
+		}
 	}
 
 	#carte{
