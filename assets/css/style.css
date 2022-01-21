@@ -1,9 +1,9 @@
 @charset "UTF-8";
 /* To-do list ----------------------------
-Mixins (en trouver d'autres)
 Animations (coeurs à finir;
 plats;
 check;)
+Retirer les "for" (html)
 */
 /* ---------------------------- Variables ---------------------------- */
 /* ---------------------------- Mixins ---------------------------- */
@@ -658,14 +658,13 @@ img {
           box-shadow: 0 1px 5px grey;
   margin: 1em 0;
   position: relative;
-  overflow: hidden;
+  position: relative;
   cursor: pointer;
-  -webkit-animation: dish-in 1000ms 1000ms ease-in-out forwards;
-          animation: dish-in 1000ms 1000ms ease-in-out forwards;
 }
 
 #carte fieldset .card input {
-  display: none;
+  position: absolute;
+  left: -999px;
 }
 
 #carte fieldset .card__dish {
@@ -706,10 +705,9 @@ img {
 
 #carte fieldset .card__check {
   padding-left: 1em;
-  position: absolute;
   right: 0;
   bottom: 0;
-  visibility: hidden;
+  width: 0%;
 }
 
 #carte fieldset .card__check i {
@@ -719,9 +717,55 @@ img {
   background-color: #99E2D0;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  position: unset;
-  right: unset;
-  bottom: unset;
+  visibility: hidden;
+}
+
+#carte fieldset .card:hover__check {
+  -webkit-animation: slidein 1000ms ease-in-out forwards;
+          animation: slidein 1000ms ease-in-out forwards;
+}
+
+#carte fieldset .card:hover i {
+  -webkit-animation: checkappear 500ms ease-in-out forwards;
+          animation: checkappear 500ms ease-in-out forwards;
+}
+
+@-webkit-keyframes checkappear {
+  0% {
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    visibility: visible;
+  }
+}
+
+@keyframes checkappear {
+  0% {
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes slidein {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 24.5%;
+  }
+}
+
+@keyframes slidein {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 24.5%;
+  }
 }
 
 #carte .button {
@@ -734,30 +778,17 @@ img {
   width: 10em;
 }
 
-@-webkit-keyframes dish-in {
-  0% {
-    opacity: 0;
-    height: 0;
-    visibility: hidden;
-  }
-  100% {
-    opacity: 1;
-    visibility: unset;
-  }
-}
-
-@keyframes dish-in {
-  0% {
-    opacity: 0;
-    height: 0;
-    visibility: hidden;
-  }
-  100% {
-    opacity: 1;
-    visibility: unset;
-  }
-}
-
+/*@keyframes dish-in {
+	0%{
+		opacity: 0;
+		height: 0;
+		visibility: hidden;
+	}
+	100%{
+		opacity: 1;
+		visibility: unset;
+	}
+}*/
 /* ---------------------------- Footer ---------------------------- */
 footer {
   background-color: #353535;

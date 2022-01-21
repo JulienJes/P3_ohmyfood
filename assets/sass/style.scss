@@ -1,8 +1,8 @@
 /* To-do list ----------------------------
-Mixins (en trouver d'autres)
 Animations (coeurs à finir;
 plats;
 check;)
+Retirer les "for" (html)
 */
 
 /* ---------------------------- Variables ---------------------------- */
@@ -24,6 +24,10 @@ $anim-dur: 3000ms;
 $anim-delay: $anim-dur / $num-words;
 
 /* ---------------------------- Mixins ---------------------------- */
+
+@mixin outofscreen{
+	position: absolute; left: -999px;
+}
 
 @mixin emptyafter {
 	content: ".";
@@ -306,7 +310,7 @@ img{
 .recherche{
 	flex-basis: 100%;
 	& label{
-		position:absolute; left:-999px
+		@include outofscreen;
 	}
 	&__form{
 		display: flex;
@@ -498,11 +502,11 @@ img{
 			display: flex;
    			justify-content: space-between;
 			@include formatcard;
-			overflow: hidden;
+			position: relative;
 			cursor: pointer;
-			animation: dish-in 1000ms 1000ms ease-in-out forwards;
+			//animation: dish-in 1000ms 1000ms ease-in-out forwards;
 			& input{
-				display: none;
+				@include outofscreen;
 			}
 			&__dish{
 				display: flex;
@@ -528,10 +532,9 @@ img{
 			}
 			&__check{
 				    padding-left: 1em;
-					position: absolute;
  					right: 0;
 					bottom: 0;
-					visibility: hidden;
+					width: 0%;
 				& i{
 					font-size: 2em;
 					color: white;
@@ -539,9 +542,34 @@ img{
 					background-color: $color-tertiary;
 					border-top-right-radius: 15px;
 					border-bottom-right-radius: 15px;
-					position: unset;
- 					right: unset;
-					bottom: unset;
+					visibility: hidden;
+				}
+			}
+			&:hover{
+				&__dish{
+
+				}
+				&__check{
+					animation: slidein 1000ms ease-in-out forwards;
+				}
+				& i{
+					animation: checkappear 500ms ease-in-out forwards;
+				}
+			}
+			@keyframes checkappear {
+				0%{
+				}
+				100%{
+					transform: rotate(360deg);
+					visibility: visible;
+				}
+			}
+			@keyframes slidein{
+				0%{
+					right: 0;
+				}
+				100%{
+					right: 24.5%;
 				}
 			}
 		}
@@ -551,10 +579,10 @@ img{
 		& .btn{
 			width: 10em;
 		}
-	}	
+	}
 }
 
-@keyframes dish-in {
+/*@keyframes dish-in {
 	0%{
 		opacity: 0;
 		height: 0;
@@ -564,7 +592,7 @@ img{
 		opacity: 1;
 		visibility: unset;
 	}
-}
+}*/
 
 /* ---------------------------- Footer ---------------------------- */
 footer{
