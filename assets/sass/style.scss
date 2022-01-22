@@ -1,8 +1,12 @@
 /* To-do list ----------------------------
-Animations (coeurs à finir;
-plats;
-check;)
-Retirer les "for" (html)
+Animations {
+	check;
+}
+Harmoniser et mettre à jour HTML (UNE FOIS FINI LES EFFETS) {
+	Copier coller depuis délice;
+	Mettre à jour les class .fadein (pas le mm nombre de plats);
+	Mettre à jour le texte
+}
 */
 
 /* ---------------------------- Variables ---------------------------- */
@@ -23,10 +27,12 @@ $num-words: 3;
 $anim-dur: 3000ms;
 $anim-delay: $anim-dur / $num-words;
 
+$num-dishes: 13;
+
 /* ---------------------------- Mixins ---------------------------- */
 
 @mixin outofscreen{
-	position: absolute; left: -999px;
+	position: absolute; left: -9999px;
 }
 
 @mixin emptyafter {
@@ -129,7 +135,7 @@ img{
 	object-fit: cover;
 }
 
-/*.fa-heart{
+.fa-heart{
 	-webkit-text-fill-color: white;
 	-webkit-text-stroke-width: 3px;
 	-webkit-text-stroke-color: black;
@@ -156,9 +162,9 @@ img{
    		opacity: 1;
     	-webkit-text-stroke: unset;
 	}
-}*/
+}
 
-.heart{
+/*.heart{
 	cursor: pointer;
 		& .fas{
 			visibility: hidden;
@@ -166,10 +172,10 @@ img{
 		&:hover{
 			& .far{
 				animation: heart-out 100ms ease-in-out 0s forwards;
-			/*& .fas{
+			& .fas{
 				cursor: pointer;
 				animation: heart-in 200ms ease-in-out 0s;
-			}*/
+			}
 		}
 	}
 }
@@ -188,7 +194,7 @@ img{
 	100%{
 		visibility: visible;
 	}
-}
+}*/
 
 /* ---------------------------- Loader ---------------------------- */
 
@@ -203,7 +209,7 @@ img{
 	animation: loader 1000ms $anim-dur+1000ms ease-in-out forwards;
 	& .word{
 		font-family: 'Shrikhand', sans-serif;
-		font-size: 4em;
+		font-size: 3em;
 		color: white;
 		visibility: hidden;
 		animation: words $anim-dur forwards;
@@ -413,7 +419,7 @@ img{
 		& h3,& p{
 			margin: 0;
 		}
-		& .fas{
+		/*& .fas{
 			background: linear-gradient($color-primary, $color-secondary);
 			background-clip: text;
 			color: transparent;
@@ -421,7 +427,7 @@ img{
 			&:hover{
 				visibility: unset;
 			}
-		}
+		}*/
 		& i{
 			font-size: 1.5em;
 			position: absolute;
@@ -445,9 +451,9 @@ img{
 	&:hover{
 		& i{
 		transition: 200ms;
-		background: linear-gradient($color-primary, $color-secondary);
-		background-clip: text;
-		color: transparent;
+		background: -webkit-linear-gradient($color-primary, $color-secondary);
+  		-webkit-background-clip: text;
+ 		-webkit-text-fill-color: transparent;
 		}
 	}
 }
@@ -474,12 +480,14 @@ img{
 	&__title{
 		display: flex;
 		align-items: center;
+		position: relative;
 		& h1{
 			padding-right: 1.8em;
+			font-size: 1.8em;
 		}
 		& i{
-		font-size: 2em;
-		position: absolute; right: 1em; top: 1em;
+			font-size: 1.8em;
+			position: absolute; right: 0.1em; top: 1em;
 		}
 	}
 }
@@ -504,7 +512,6 @@ img{
 			@include formatcard;
 			position: relative;
 			cursor: pointer;
-			//animation: dish-in 1000ms 1000ms ease-in-out forwards;
 			& input{
 				@include outofscreen;
 			}
@@ -524,44 +531,35 @@ img{
 			&__price{
 				display: flex;
 				align-items: flex-end;
+				justify-content: flex-end;
 				font-weight: bold;
-				margin: 0 16px 8px 0;
+				margin: 0 -52px 8px 0; // à voir
 				& label{
 					font-weight: bold;
 				}
 			}
 			&__check{
-				    padding-left: 1em;
- 					right: 0;
-					bottom: 0;
-					width: 0%;
-				& i{
-					font-size: 2em;
-					color: white;
-					padding: 21px 30px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					margin-left: 1em; // à dégager?
 					background-color: $color-tertiary;
 					border-top-right-radius: 15px;
 					border-bottom-right-radius: 15px;
-					visibility: hidden;
+					width: 0%;
+				& i{
+					opacity: 0;
+					font-size: 2em;
+					color: white;
+					padding: 21px 30px;
 				}
 			}
 			&:hover{
-				&__dish{
-
-				}
-				&__check{
+				& .slidein{
 					animation: slidein 1000ms ease-in-out forwards;
 				}
 				& i{
 					animation: checkappear 500ms ease-in-out forwards;
-				}
-			}
-			@keyframes checkappear {
-				0%{
-				}
-				100%{
-					transform: rotate(360deg);
-					visibility: visible;
 				}
 			}
 			@keyframes slidein{
@@ -569,9 +567,19 @@ img{
 					right: 0;
 				}
 				100%{
-					right: 24.5%;
+					right: -4%;
+					width: 25%;
 				}
 			}
+			@keyframes checkappear {
+				0%{
+				}
+				100%{
+					transform: rotate(360deg);
+					opacity: 1;
+				}
+			}
+			
 		}
 	}
 	& .button{
@@ -582,17 +590,23 @@ img{
 	}
 }
 
-/*@keyframes dish-in {
+.fadein{
+	@for $i from 1 through $num-dishes{
+		&--#{$i}{
+			animation: fadein 800ms 200ms*$i ease-in-out both;
+		}
+	}
+}
+@keyframes fadein{
 	0%{
-		opacity: 0;
-		height: 0;
-		visibility: hidden;
+	opacity: 0;
+	transform: translateY(20px);
+  }
+  100%{
+	opacity: 1;
+	transform: translateY(0);
 	}
-	100%{
-		opacity: 1;
-		visibility: unset;
-	}
-}*/
+}
 
 /* ---------------------------- Footer ---------------------------- */
 footer{
@@ -618,6 +632,12 @@ footer{
 
 /* ---------------------------- Tablettes ---------------------------- */
 @media screen and (min-width:768px){
+	.loader{
+		& .word{
+			font-size: 4em;
+		}
+	}
+	
 	.logo{
 		& i{
 			font-size: 1.3em;
@@ -656,12 +676,19 @@ footer{
 		}
 	}	
 
-	.menu__title{
-		padding: 0 2em;
-		& i{
-			right: 2em;
+	.menu{
+		&__title{
+			& h1{
+				font-size: 2em;
+			}
+			& i{
+				font-size: 2em;
+				position: absolute; right: 1em; top: 1em;
+			}
 		}
 	}
+
+	
 
 	#carte{
 		& fieldset{

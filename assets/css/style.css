@@ -1,9 +1,13 @@
 @charset "UTF-8";
 /* To-do list ----------------------------
-Animations (coeurs à finir;
-plats;
-check;)
-Retirer les "for" (html)
+Animations {
+	check;
+}
+Harmoniser et mettre à jour HTML (UNE FOIS FINI LES EFFETS) {
+	Copier coller depuis délice;
+	Mettre à jour les class .fadein (pas le mm nombre de plats);
+	Mettre à jour le texte
+}
 */
 /* ---------------------------- Variables ---------------------------- */
 /* ---------------------------- Mixins ---------------------------- */
@@ -104,87 +108,91 @@ img {
      object-fit: cover;
 }
 
-/*.fa-heart{
-	-webkit-text-fill-color: white;
-	-webkit-text-stroke-width: 3px;
-	-webkit-text-stroke-color: black;
-	cursor: pointer;
-	&:hover{
-		animation: heart 1500ms ease-out forwards;
-	}
-}
-
-@keyframes heart{
-	0%{
-	background: linear-gradient($color-primary, $color-secondary);
-	background-clip: text;
-	-webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    opacity: 0;
-    -webkit-text-stroke: unset;
-	}
-	100%{
-		background: linear-gradient($color-secondary, $color-primary);
-		background-clip: text;
-		-webkit-background-clip: text;
-    	-webkit-text-fill-color: transparent;
-   		opacity: 1;
-    	-webkit-text-stroke: unset;
-	}
-}*/
-.heart {
+.fa-heart {
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
   cursor: pointer;
 }
 
-.heart .fas {
-  visibility: hidden;
+.fa-heart:hover {
+  -webkit-animation: heart 1500ms ease-out forwards;
+          animation: heart 1500ms ease-out forwards;
 }
 
-.heart:hover .far {
-  -webkit-animation: heart-out 100ms ease-in-out 0s forwards;
-          animation: heart-out 100ms ease-in-out 0s forwards;
-  /*& .fas{
+@-webkit-keyframes heart {
+  0% {
+    background: -webkit-gradient(linear, left top, left bottom, from(#9356DC), to(#FF79DA));
+    background: linear-gradient(#9356DC, #FF79DA);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    -webkit-text-stroke: unset;
+  }
+  100% {
+    background: -webkit-gradient(linear, left top, left bottom, from(#FF79DA), to(#9356DC));
+    background: linear-gradient(#FF79DA, #9356DC);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1;
+    -webkit-text-stroke: unset;
+  }
+}
+
+@keyframes heart {
+  0% {
+    background: -webkit-gradient(linear, left top, left bottom, from(#9356DC), to(#FF79DA));
+    background: linear-gradient(#9356DC, #FF79DA);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    -webkit-text-stroke: unset;
+  }
+  100% {
+    background: -webkit-gradient(linear, left top, left bottom, from(#FF79DA), to(#9356DC));
+    background: linear-gradient(#FF79DA, #9356DC);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1;
+    -webkit-text-stroke: unset;
+  }
+}
+
+/*.heart{
+	cursor: pointer;
+		& .fas{
+			visibility: hidden;
+		}
+		&:hover{
+			& .far{
+				animation: heart-out 100ms ease-in-out 0s forwards;
+			& .fas{
 				cursor: pointer;
 				animation: heart-in 200ms ease-in-out 0s;
-			}*/
+			}
+		}
+	}
 }
-
-@-webkit-keyframes heart-out {
-  0% {
-    visibility: visible;
-  }
-  100% {
-    visibility: hidden;
-  }
-}
-
 @keyframes heart-out {
-  0% {
-    visibility: visible;
-  }
-  100% {
-    visibility: hidden;
-  }
+	0%{
+		visibility: visible;
+	}
+	100%{
+		visibility: hidden;
+	}
 }
-
-@-webkit-keyframes heart-in {
-  0% {
-    visibility: hidden;
-  }
-  100% {
-    visibility: visible;
-  }
-}
-
 @keyframes heart-in {
-  0% {
-    visibility: hidden;
-  }
-  100% {
-    visibility: visible;
-  }
-}
-
+	0%{
+		visibility: hidden;
+	}
+	100%{
+		visibility: visible;
+	}
+}*/
 /* ---------------------------- Loader ---------------------------- */
 .loader {
   width: 100%;
@@ -206,7 +214,7 @@ img {
 
 .loader .word {
   font-family: 'Shrikhand', sans-serif;
-  font-size: 4em;
+  font-size: 3em;
   color: white;
   visibility: hidden;
   -webkit-animation: words 3000ms forwards;
@@ -395,7 +403,7 @@ img {
 
 .recherche label {
   position: absolute;
-  left: -999px;
+  left: -9999px;
 }
 
 .recherche__form {
@@ -523,6 +531,15 @@ img {
   transition: -webkit-transform 250ms ease-in-out;
   transition: transform 250ms ease-in-out;
   transition: transform 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  /*& .fas{
+			background: linear-gradient($color-primary, $color-secondary);
+			background-clip: text;
+			color: transparent;
+			visibility: hidden;
+			&:hover{
+				visibility: unset;
+			}
+		}*/
 }
 
 #restaurants .card a {
@@ -542,18 +559,6 @@ img {
 
 #restaurants .card h3, #restaurants .card p {
   margin: 0;
-}
-
-#restaurants .card .fas {
-  background: -webkit-gradient(linear, left top, left bottom, from(#9356DC), to(#FF79DA));
-  background: linear-gradient(#9356DC, #FF79DA);
-  background-clip: text;
-  color: transparent;
-  visibility: hidden;
-}
-
-#restaurants .card .fas:hover {
-  visibility: unset;
 }
 
 #restaurants .card i {
@@ -579,10 +584,9 @@ img {
 .logo:hover i {
   -webkit-transition: 200ms;
   transition: 200ms;
-  background: -webkit-gradient(linear, left top, left bottom, from(#9356DC), to(#FF79DA));
-  background: linear-gradient(#9356DC, #FF79DA);
-  background-clip: text;
-  color: transparent;
+  background: -webkit-linear-gradient(#9356DC, #FF79DA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .cover {
@@ -614,16 +618,18 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .menu__title h1 {
   padding-right: 1.8em;
+  font-size: 1.8em;
 }
 
 .menu__title i {
-  font-size: 2em;
+  font-size: 1.8em;
   position: absolute;
-  right: 1em;
+  right: 0.1em;
   top: 1em;
 }
 
@@ -664,7 +670,7 @@ img {
 
 #carte fieldset .card input {
   position: absolute;
-  left: -999px;
+  left: -9999px;
 }
 
 #carte fieldset .card__dish {
@@ -695,8 +701,11 @@ img {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   font-weight: bold;
-  margin: 0 16px 8px 0;
+  margin: 0 -52px 8px 0;
 }
 
 #carte fieldset .card__price label {
@@ -704,23 +713,30 @@ img {
 }
 
 #carte fieldset .card__check {
-  padding-left: 1em;
-  right: 0;
-  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 1em;
+  background-color: #99E2D0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
   width: 0%;
 }
 
 #carte fieldset .card__check i {
+  opacity: 0;
   font-size: 2em;
   color: white;
   padding: 21px 30px;
-  background-color: #99E2D0;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  visibility: hidden;
 }
 
-#carte fieldset .card:hover__check {
+#carte fieldset .card:hover .slidein {
   -webkit-animation: slidein 1000ms ease-in-out forwards;
           animation: slidein 1000ms ease-in-out forwards;
 }
@@ -730,13 +746,33 @@ img {
           animation: checkappear 500ms ease-in-out forwards;
 }
 
+@-webkit-keyframes slidein {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -4%;
+    width: 25%;
+  }
+}
+
+@keyframes slidein {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -4%;
+    width: 25%;
+  }
+}
+
 @-webkit-keyframes checkappear {
   0% {
   }
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
-    visibility: visible;
+    opacity: 1;
   }
 }
 
@@ -746,25 +782,7 @@ img {
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
-    visibility: visible;
-  }
-}
-
-@-webkit-keyframes slidein {
-  0% {
-    right: 0;
-  }
-  100% {
-    right: 24.5%;
-  }
-}
-
-@keyframes slidein {
-  0% {
-    right: 0;
-  }
-  100% {
-    right: 24.5%;
+    opacity: 1;
   }
 }
 
@@ -778,17 +796,97 @@ img {
   width: 10em;
 }
 
-/*@keyframes dish-in {
-	0%{
-		opacity: 0;
-		height: 0;
-		visibility: hidden;
-	}
-	100%{
-		opacity: 1;
-		visibility: unset;
-	}
-}*/
+.fadein--1 {
+  -webkit-animation: fadein 800ms 200ms ease-in-out both;
+          animation: fadein 800ms 200ms ease-in-out both;
+}
+
+.fadein--2 {
+  -webkit-animation: fadein 800ms 400ms ease-in-out both;
+          animation: fadein 800ms 400ms ease-in-out both;
+}
+
+.fadein--3 {
+  -webkit-animation: fadein 800ms 600ms ease-in-out both;
+          animation: fadein 800ms 600ms ease-in-out both;
+}
+
+.fadein--4 {
+  -webkit-animation: fadein 800ms 800ms ease-in-out both;
+          animation: fadein 800ms 800ms ease-in-out both;
+}
+
+.fadein--5 {
+  -webkit-animation: fadein 800ms 1000ms ease-in-out both;
+          animation: fadein 800ms 1000ms ease-in-out both;
+}
+
+.fadein--6 {
+  -webkit-animation: fadein 800ms 1200ms ease-in-out both;
+          animation: fadein 800ms 1200ms ease-in-out both;
+}
+
+.fadein--7 {
+  -webkit-animation: fadein 800ms 1400ms ease-in-out both;
+          animation: fadein 800ms 1400ms ease-in-out both;
+}
+
+.fadein--8 {
+  -webkit-animation: fadein 800ms 1600ms ease-in-out both;
+          animation: fadein 800ms 1600ms ease-in-out both;
+}
+
+.fadein--9 {
+  -webkit-animation: fadein 800ms 1800ms ease-in-out both;
+          animation: fadein 800ms 1800ms ease-in-out both;
+}
+
+.fadein--10 {
+  -webkit-animation: fadein 800ms 2000ms ease-in-out both;
+          animation: fadein 800ms 2000ms ease-in-out both;
+}
+
+.fadein--11 {
+  -webkit-animation: fadein 800ms 2200ms ease-in-out both;
+          animation: fadein 800ms 2200ms ease-in-out both;
+}
+
+.fadein--12 {
+  -webkit-animation: fadein 800ms 2400ms ease-in-out both;
+          animation: fadein 800ms 2400ms ease-in-out both;
+}
+
+.fadein--13 {
+  -webkit-animation: fadein 800ms 2600ms ease-in-out both;
+          animation: fadein 800ms 2600ms ease-in-out both;
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
 /* ---------------------------- Footer ---------------------------- */
 footer {
   background-color: #353535;
@@ -817,6 +915,9 @@ footer .fa-hands-helping {
 
 /* ---------------------------- Tablettes ---------------------------- */
 @media screen and (min-width: 768px) {
+  .loader .word {
+    font-size: 4em;
+  }
   .logo i {
     font-size: 1.3em;
     left: 3em;
@@ -874,11 +975,14 @@ footer .fa-hands-helping {
     -ms-flex-preferred-size: 40%;
         flex-basis: 40%;
   }
-  .menu__title {
-    padding: 0 2em;
+  .menu__title h1 {
+    font-size: 2em;
   }
   .menu__title i {
-    right: 2em;
+    font-size: 2em;
+    position: absolute;
+    right: 1em;
+    top: 1em;
   }
   #carte fieldset legend::after {
     content: ".";
