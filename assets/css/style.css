@@ -708,6 +708,7 @@ img {
       -ms-flex-pack: end;
           justify-content: flex-end;
   font-weight: bold;
+  width: 30%;
   margin: 0 0 8px auto;
 }
 
@@ -758,22 +759,18 @@ img {
 @-webkit-keyframes slidein {
   0% {
     opacity: 0;
-    right: 0;
   }
   100% {
-    width: 5em;
-    right: -4%;
+    width: 100%;
   }
 }
 
 @keyframes slidein {
   0% {
     opacity: 0;
-    right: 0;
   }
   100% {
-    width: 5em;
-    right: -4%;
+    width: 100%;
   }
 }
 

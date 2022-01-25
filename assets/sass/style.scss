@@ -525,7 +525,7 @@ img{
 			&__dish{
 				@include flex-column;	
 				margin: 8px 0 8px 16px;
-				width: 100%;
+				width: 80%;
 				& > span{
 					text-overflow: ellipsis;	
 					white-space: nowrap;
@@ -537,6 +537,7 @@ img{
 			}
 			&__right{
 				display: flex;
+				width: 20%;
 				&--price{
 					display: flex;
 					align-items: flex-end;
@@ -564,8 +565,7 @@ img{
 			}
 			&:hover{
 				& .ellipsis{
-					transition: 1000ms;
-					width: 61%;
+					width: 60%;
 				}
 				& .slidein{
 					animation: slidein 1000ms ease-in-out both;
@@ -577,11 +577,9 @@ img{
 			@keyframes slidein{
 				0%{
 					opacity: 0;
-					right:0;
 				}
 				100%{
-					width: 5em;
-					right: -4%;
+					width: 100%
 				}
 			}
 			@keyframes checkappear {
