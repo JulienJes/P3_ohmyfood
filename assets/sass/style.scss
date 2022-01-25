@@ -42,6 +42,17 @@ $num-dishes: 13;
 	font-size: 0;
 }
 
+@mixin flex-align-justify-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-column{
+	display: flex;
+	flex-direction: column;
+}
+
 @mixin formatcard{
 		border-radius: 1em;
 		background-color: white;
@@ -54,6 +65,12 @@ $num-dishes: 13;
 	background: -webkit-linear-gradient($color-primary, $color-secondary);
 	background: -moz-linear-gradient($color-primary, $color-secondary);
 	background: linear-gradient($color-primary, $color-secondary);
+}
+
+@mixin background-clip{
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
 }
 
 /* ---------------------------- Global ---------------------------- */
@@ -144,7 +161,7 @@ img{
 }
 
 .fa-heart{
-	-webkit-text-fill-color: white;
+	color: white;
 	-webkit-text-stroke-width: 3px;
 	-webkit-text-stroke-color: black;
 	cursor: pointer;
@@ -156,53 +173,49 @@ img{
 @keyframes heart{
 	0%{
 	background: linear-gradient($color-primary, $color-secondary);
-	background-clip: text;
-	-webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+	@include background-clip;
+    color: transparent;
     opacity: 0;
     -webkit-text-stroke: unset;
 	}
 	100%{
 		background: linear-gradient($color-secondary, $color-primary);
-		background-clip: text;
-		-webkit-background-clip: text;
-    	-webkit-text-fill-color: transparent;
+		@include background-clip;
+    	color: transparent;
    		opacity: 1;
     	-webkit-text-stroke: unset;
 	}
 }
 
-/*.heart{
+/*
+.heart{
 	cursor: pointer;
-		& .fas{
-			visibility: hidden;
-		}
 		&:hover{
 			& .far{
 				animation: heart-out 100ms ease-in-out 0s forwards;
 			& .fas{
-				cursor: pointer;
-				animation: heart-in 200ms ease-in-out 0s;
+				animation: heart-in 200ms ease-in-out 0s both;
 			}
 		}
 	}
 }
 @keyframes heart-out {
 	0%{
-		visibility: visible;
+		opacity: 1;
 	}
 	100%{
-		visibility: hidden;
+		opacity: 0;
 	}
 }
 @keyframes heart-in {
 	0%{
-		visibility: hidden;
+		opacity: 0;
 	}
 	100%{
-		visibility: visible;
+		opacity: 1;
 	}
-}*/
+}
+*/
 
 /* ---------------------------- Loader ---------------------------- */
 
@@ -210,17 +223,14 @@ img{
 	width: 100%;
 	height: 100vh;
 	background: $color-bg-footer-loader;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex-align-justify-center;
 	overflow-y: hidden;
 	animation: loader 1000ms $anim-dur+1000ms ease-in-out forwards;
 	& .word{
 		font-family: 'Shrikhand', sans-serif;
 		font-size: 3em;
 		color: white;
-		visibility: hidden;
-		animation: words $anim-dur forwards;
+		animation: words $anim-dur both;
 		@for $i from 1 through $num-words{
             &--#{$i}{
                 animation-delay: $anim-delay*$i;
@@ -235,8 +245,6 @@ img{
 	100%{
 		opacity: 0;
 		height: 0;
-		visibility: hidden;
-		overflow: hidden;
 	}
 }
 @keyframes words{
@@ -245,7 +253,6 @@ img{
 	}
 	100%{
 		opacity: 1;
-		visibility: unset;
 	}
 }
 
@@ -295,14 +302,11 @@ img{
 	}
 }
 
-
 /* ---------------------------- Header ---------------------------- */
 .logo{
 	margin: 1em 0;
 	& a{
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@include flex-align-justify-center;
 	}
 	& i{
 		position: absolute;
@@ -315,8 +319,7 @@ img{
 
 /* ---------------------------- Réservation ---------------------------- */
 #explorer{
-	display: flex;
-	flex-direction: column;
+	@include flex-column;
 	justify-content: center;
 }
 
@@ -326,9 +329,7 @@ img{
 		@include outofscreen;
 	}
 	&__form{
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		@include flex-align-justify-center;
 		width: 100%;
 		height: 3em;
 		background-color: $color-background;
@@ -348,8 +349,7 @@ img{
 }
 
 .corps{
-	display: flex;
-	flex-direction: column;
+	@include flex-column;
 	align-items: center;
 	padding: 1em 0 2em 0;
 }
@@ -374,9 +374,7 @@ img{
 	box-shadow: 0 0.2em 0.5em lightgrey;
 	transition: 300ms;
 		& span{
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		@include flex-align-justify-center;
 		width: 25px;
 		height: 25px;
 		border-radius: 50%;
@@ -460,13 +458,9 @@ img{
 	}
 	&:hover{
 		& i{
-		background: -webkit-linear-gradient($color-primary, $color-secondary);
-		background: -moz-linear-gradient($color-primary, $color-secondary);
-		background: linear-gradient($color-primary, $color-secondary);
-  		-webkit-background-clip: text;
-		-moz-background-clip: text;
- 		-webkit-text-fill-color: transparent;
-		-moz-text-fill-color: transparent;
+		@include bg-linear-gradient;
+  		@include background-clip;
+		color: transparent;
 		}
 	}
 }
@@ -529,14 +523,13 @@ img{
 				@include outofscreen;
 			}
 			&__dish{
-				display: flex;
-				flex-direction: column;	
+				@include flex-column;	
 				margin: 8px 0 8px 16px;
 				width: 100%;
 				& > span{
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				overflow: hidden;
+					text-overflow: ellipsis;	
+					white-space: nowrap;
+					overflow: hidden;
 				}
 				&--meal{
 					font-weight: bold;
@@ -555,14 +548,12 @@ img{
 					}
 				}
 				&--check{
-						display: flex;
-						justify-content: center;
-						align-items: center;
+						@include flex-align-justify-center;
 						margin-left: 1em;
 						background-color: $color-tertiary;
 						border-top-right-radius: 15px;
 						border-bottom-right-radius: 15px;
-						width: 0%;
+						width: 0;
 					& i{
 						opacity: 0;
 						font-size: 2em;
@@ -572,6 +563,10 @@ img{
 				}
 			}
 			&:hover{
+				& .ellipsis{
+					transition: 1000ms;
+					width: 61%;
+				}
 				& .slidein{
 					animation: slidein 1000ms ease-in-out both;
 				}
@@ -581,11 +576,12 @@ img{
 			}
 			@keyframes slidein{
 				0%{
-					right: 0;
+					opacity: 0;
+					right:0;
 				}
 				100%{
+					width: 5em;
 					right: -4%;
-					width: 100%;
 				}
 			}
 			@keyframes checkappear {
@@ -600,7 +596,7 @@ img{
 		}
 	}
 	& .button{
-		display:flex;
+		display: flex;
 		& .btn{
 			width: 10em;
 		}
@@ -649,6 +645,10 @@ footer{
 
 /* ---------------------------- Tablettes ---------------------------- */
 @media screen and (min-width:768px){
+	#index, #fonctionnement, #restaurants{
+		@include flex-column;
+	}
+
 	.loader{
 		& .word{
 			font-size: 4em;
@@ -664,15 +664,8 @@ footer{
 		width: 40%;
 		}
 	}
-	
-	#index{
-		display: flex;
-		flex-direction: column;
-	}
 
 	#fonctionnement{
-		display: flex;
-   		flex-direction: column;
     	align-items: center;
 		& > div{
 			width: 40%;
@@ -680,8 +673,6 @@ footer{
 	}
 
 	#restaurants{
-		display: flex;
-		flex-direction: column;
 		align-items: center;
 		& > div{
 			display: flex;
