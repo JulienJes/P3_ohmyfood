@@ -1,12 +1,14 @@
 @charset "UTF-8";
 /* To-do list ----------------------------
-Animations {
-	check;
+Animations{
+	Overflow du texte;
+	Check à l'envers en quittant l'hover;
 }
-Harmoniser et mettre à jour HTML (UNE FOIS FINI LES EFFETS) {
-	Copier coller depuis délice;
-	Mettre à jour les class .fadein (pas le mm nombre de plats);
+Harmoniser et mettre à jour HTML (UNE FOIS FINI LES EFFETS){
 	Mettre à jour le texte
+}
+Installer{
+  Autoprefixer
 }
 */
 /* ---------------------------- Variables ---------------------------- */
@@ -280,14 +282,14 @@ img {
   }
 }
 
-.lds-dual-ring {
+.dual-ring {
   position: absolute;
   display: inline-block;
   width: 80px;
   height: 80px;
 }
 
-.lds-dual-ring:after {
+.dual-ring:after {
   content: ".";
   font-size: 0;
   display: block;
@@ -297,11 +299,11 @@ img {
   border-radius: 50%;
   border: 6px solid white;
   border-color: white transparent white transparent;
-  -webkit-animation: lds-dual-ring 1.2s linear 800ms forwards;
-          animation: lds-dual-ring 1.2s linear 800ms forwards;
+  -webkit-animation: dual-ring 1.2s linear 800ms forwards;
+          animation: dual-ring 1.2s linear 800ms forwards;
 }
 
-@-webkit-keyframes lds-dual-ring {
+@-webkit-keyframes dual-ring {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
@@ -316,7 +318,7 @@ img {
   }
 }
 
-@keyframes lds-dual-ring {
+@keyframes dual-ring {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
@@ -344,7 +346,6 @@ img {
   100% {
     height: 100%;
     visibility: visible;
-    overflow: visible;
   }
 }
 
@@ -352,7 +353,6 @@ img {
   100% {
     height: 100%;
     visibility: visible;
-    overflow: visible;
   }
 }
 
@@ -581,12 +581,18 @@ img {
 }
 
 /* ---------------------------- Menus ---------------------------- */
+.logo i {
+  -webkit-transition: all linear 200ms;
+  transition: all linear 200ms;
+}
+
 .logo:hover i {
-  -webkit-transition: 200ms;
-  transition: 200ms;
-  background: -webkit-linear-gradient(#9356DC, #FF79DA);
+  background: -webkit-gradient(linear, left top, left bottom, from(#9356DC), to(#FF79DA));
+  background: linear-gradient(#9356DC, #FF79DA);
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
 
 .cover {
@@ -623,11 +629,11 @@ img {
 
 .menu__title h1 {
   padding-right: 1.8em;
-  font-size: 1.8em;
+  font-size: 1.8rem;
 }
 
 .menu__title i {
-  font-size: 1.8em;
+  font-size: 1.8rem;
   position: absolute;
   right: 0.1em;
   top: 1em;
@@ -664,8 +670,8 @@ img {
           box-shadow: 0 1px 5px grey;
   margin: 1em 0;
   position: relative;
-  position: relative;
   cursor: pointer;
+  overflow: hidden;
 }
 
 #carte fieldset .card input {
@@ -682,19 +688,26 @@ img {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 8px 0 8px 16px;
+  width: 100%;
 }
 
 #carte fieldset .card__dish > span {
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 #carte fieldset .card__dish--meal {
   font-weight: bold;
 }
 
-#carte fieldset .card__price {
+#carte fieldset .card__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#carte fieldset .card__right--price {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -705,14 +718,14 @@ img {
       -ms-flex-pack: end;
           justify-content: flex-end;
   font-weight: bold;
-  margin: 0 -52px 8px 0;
+  margin: 0 0 8px auto;
 }
 
-#carte fieldset .card__price label {
+#carte fieldset .card__right--price label {
   font-weight: bold;
 }
 
-#carte fieldset .card__check {
+#carte fieldset .card__right--check {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -729,7 +742,7 @@ img {
   width: 0%;
 }
 
-#carte fieldset .card__check i {
+#carte fieldset .card__right--check i {
   opacity: 0;
   font-size: 2em;
   color: white;
@@ -737,13 +750,13 @@ img {
 }
 
 #carte fieldset .card:hover .slidein {
-  -webkit-animation: slidein 1000ms ease-in-out forwards;
-          animation: slidein 1000ms ease-in-out forwards;
+  -webkit-animation: slidein 1000ms ease-in-out both;
+          animation: slidein 1000ms ease-in-out both;
 }
 
 #carte fieldset .card:hover i {
-  -webkit-animation: checkappear 500ms ease-in-out forwards;
-          animation: checkappear 500ms ease-in-out forwards;
+  -webkit-animation: checkappear 500ms ease-in-out both;
+          animation: checkappear 500ms ease-in-out both;
 }
 
 @-webkit-keyframes slidein {
@@ -752,7 +765,7 @@ img {
   }
   100% {
     right: -4%;
-    width: 25%;
+    width: 100%;
   }
 }
 
@@ -762,7 +775,7 @@ img {
   }
   100% {
     right: -4%;
-    width: 25%;
+    width: 100%;
   }
 }
 
@@ -983,6 +996,9 @@ footer .fa-hands-helping {
     position: absolute;
     right: 1em;
     top: 1em;
+  }
+  #carte fieldset legend {
+    text-align: center;
   }
   #carte fieldset legend::after {
     content: ".";
