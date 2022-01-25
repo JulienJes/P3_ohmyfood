@@ -1,16 +1,4 @@
 @charset "UTF-8";
-/* To-do list ----------------------------
-Animations{
-	Overflow du texte;
-	Check à l'envers en quittant l'hover;
-}
-Harmoniser et mettre à jour HTML (UNE FOIS FINI LES EFFETS){
-	Mettre à jour le texte
-}
-Installer{
-  Autoprefixer
-}
-*/
 /* ---------------------------- Variables ---------------------------- */
 /* ---------------------------- Mixins ---------------------------- */
 /* ---------------------------- Global ---------------------------- */
@@ -164,35 +152,6 @@ img {
   }
 }
 
-/*
-.heart{
-	cursor: pointer;
-		&:hover{
-			& .far{
-				animation: heart-out 100ms ease-in-out 0s forwards;
-			& .fas{
-				animation: heart-in 200ms ease-in-out 0s both;
-			}
-		}
-	}
-}
-@keyframes heart-out {
-	0%{
-		opacity: 1;
-	}
-	100%{
-		opacity: 0;
-	}
-}
-@keyframes heart-in {
-	0%{
-		opacity: 0;
-	}
-	100%{
-		opacity: 1;
-	}
-}
-*/
 /* ---------------------------- Loader ---------------------------- */
 .loader {
   width: 100%;
@@ -522,15 +481,6 @@ img {
   transition: -webkit-transform 250ms ease-in-out;
   transition: transform 250ms ease-in-out;
   transition: transform 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  /*& .fas{
-			background: linear-gradient($color-primary, $color-secondary);
-			background-clip: text;
-			color: transparent;
-			visibility: hidden;
-			&:hover{
-				visibility: unset;
-			}
-		}*/
 }
 
 #restaurants .card a {
@@ -563,7 +513,6 @@ img {
   border-radius: 0.15em;
   background-color: #99E2D0;
   color: #008766;
-  color: #1e6856 #7cffdf;
   padding: 0 0.8em;
   font-weight: bold;
   position: absolute;
@@ -678,7 +627,7 @@ img {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 8px 0 8px 16px;
-  width: 100%;
+  width: 80%;
 }
 
 #carte fieldset .card__dish > span {
@@ -708,7 +657,6 @@ img {
       -ms-flex-pack: end;
           justify-content: flex-end;
   font-weight: bold;
-  width: 30%;
   margin: 0 0 8px auto;
 }
 
@@ -741,9 +689,7 @@ img {
 }
 
 #carte fieldset .card:hover .ellipsis {
-  -webkit-transition: 1000ms;
-  transition: 1000ms;
-  width: 61%;
+  width: 60%;
 }
 
 #carte fieldset .card:hover .slidein {
@@ -987,7 +933,7 @@ footer .fa-hands-helping {
     width: 100%;
   }
   #carte fieldset .card {
-    margin: 1em 2em;
+    margin: 1em 5em;
   }
   footer {
     display: -webkit-box;
@@ -1038,32 +984,30 @@ footer .fa-hands-helping {
   #restaurants .card img {
     height: 18em;
   }
-  #carte {
+  #carte .field {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
-  #carte fieldset {
+  #carte .field fieldset {
     -ms-flex-preferred-size: 32%;
         flex-basis: 32%;
   }
-  #carte fieldset legend {
+  #carte .field fieldset legend {
     text-align: unset;
   }
-  #carte fieldset legend::after {
+  #carte .field fieldset legend::after {
     content: ".";
     font-size: 0;
     width: 50%;
   }
-  #carte fieldset + fieldset {
+  #carte .field fieldset + fieldset {
     margin-left: 1em;
   }
-  #carte fieldset .card {
+  #carte .field fieldset .card {
     margin-left: unset;
     margin-right: unset;
   }
