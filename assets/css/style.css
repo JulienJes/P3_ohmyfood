@@ -626,14 +626,14 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 8px 0 8px 16px;
   width: 80%;
+  margin: 8px 0 8px 16px;
 }
 
 #carte fieldset .card__dish > span {
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
 }
 
 #carte fieldset .card__dish--meal {
@@ -657,7 +657,7 @@ img {
       -ms-flex-pack: end;
           justify-content: flex-end;
   font-weight: bold;
-  margin: 0 0 8px auto;
+  margin: 0 3px 8px auto;
 }
 
 #carte fieldset .card__right--price label {
@@ -690,6 +690,8 @@ img {
 
 #carte fieldset .card:hover .ellipsis {
   width: 60%;
+  -webkit-transition: 1000ms;
+  transition: 1000ms;
 }
 
 #carte fieldset .card:hover .slidein {
@@ -698,8 +700,8 @@ img {
 }
 
 #carte fieldset .card:hover i {
-  -webkit-animation: checkappear 500ms ease-in-out both;
-          animation: checkappear 500ms ease-in-out both;
+  -webkit-animation: checkappear 600ms 50ms ease-in-out both;
+          animation: checkappear 600ms 50ms ease-in-out both;
 }
 
 @-webkit-keyframes slidein {
