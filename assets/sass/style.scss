@@ -507,12 +507,14 @@ img{
 					transform-origin: right;
 					transition: 400ms linear;
 					width: 0;
-					border-radius: 0 1rem 1rem 0;
 				& i{
 					position: absolute;
 					font-size: 2em;
 					color: white;
 				}
+			}
+			&:hover .card__dish{
+				width: calc(100% - 100px);
 			}
 			&:hover .slidein{
 				width: 100px;
@@ -520,7 +522,7 @@ img{
 			&:hover i{
 				transition: 400ms ease-in-out;
 				transform: rotate(1turn);
-			}	
+			}
 		}
 	}
 	& .button{

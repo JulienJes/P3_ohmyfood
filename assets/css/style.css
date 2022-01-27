@@ -673,13 +673,16 @@ img {
   -webkit-transition: 400ms linear;
   transition: 400ms linear;
   width: 0;
-  border-radius: 0 1rem 1rem 0;
 }
 
 #carte fieldset .card__check i {
   position: absolute;
   font-size: 2em;
   color: white;
+}
+
+#carte fieldset .card:hover .card__dish {
+  width: calc(100% - 100px);
 }
 
 #carte fieldset .card:hover .slidein {
