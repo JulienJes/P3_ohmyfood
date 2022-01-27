@@ -600,17 +600,19 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 1em;
   background-color: white;
   -webkit-box-shadow: 0 1px 5px grey;
           box-shadow: 0 1px 5px grey;
   margin: 1em 0;
-  position: relative;
   cursor: pointer;
   overflow: hidden;
+  width: 99%;
+  height: 4rem;
+  padding-left: 1rem;
 }
 
 #carte fieldset .card input {
@@ -619,52 +621,39 @@ img {
 }
 
 #carte fieldset .card__dish {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 80%;
-  margin: 8px 0 8px 16px;
-}
-
-#carte fieldset .card__dish > span {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  display: block;
 }
 
-#carte fieldset .card__dish--meal {
+#carte fieldset .card__dish__meal {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
   font-weight: bold;
 }
 
-#carte fieldset .card__right {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+#carte fieldset .card__dish__accomp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
 }
 
-#carte fieldset .card__right--price {
+#carte fieldset .card__price {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
   font-weight: bold;
-  margin: 0 3px 8px auto;
+  margin: 0 3px -29px auto;
 }
 
-#carte fieldset .card__right--price label {
-  font-weight: bold;
-}
-
-#carte fieldset .card__right--check {
+#carte fieldset .card__check {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -674,72 +663,34 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
   margin-left: 1em;
+  height: 100%;
+  min-width: 0%;
   background-color: #99E2D0;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transition: 400ms linear;
+  transition: 400ms linear;
   width: 0;
+  border-radius: 0 1rem 1rem 0;
 }
 
-#carte fieldset .card__right--check i {
-  opacity: 0;
+#carte fieldset .card__check i {
+  position: absolute;
   font-size: 2em;
   color: white;
-  padding: 21px 30px;
-}
-
-#carte fieldset .card:hover .ellipsis {
-  width: 60%;
-  -webkit-transition: 1000ms;
-  transition: 1000ms;
 }
 
 #carte fieldset .card:hover .slidein {
-  -webkit-animation: slidein 1000ms ease-in-out both;
-          animation: slidein 1000ms ease-in-out both;
+  width: 100px;
 }
 
 #carte fieldset .card:hover i {
-  -webkit-animation: checkappear 600ms 50ms ease-in-out both;
-          animation: checkappear 600ms 50ms ease-in-out both;
-}
-
-@-webkit-keyframes slidein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@keyframes slidein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@-webkit-keyframes checkappear {
-  0% {
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-    opacity: 1;
-  }
-}
-
-@keyframes checkappear {
-  0% {
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-    opacity: 1;
-  }
+  -webkit-transition: 400ms ease-in-out;
+  transition: 400ms ease-in-out;
+  -webkit-transform: rotate(1turn);
+          transform: rotate(1turn);
 }
 
 #carte .button {
