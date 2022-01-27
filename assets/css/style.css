@@ -887,7 +887,7 @@ footer .fa-hands-helping {
   }
   #carte fieldset .card {
     margin: 1em 5em;
-    width: unset;
+    width: 100%;
   }
   footer {
     display: -webkit-box;
