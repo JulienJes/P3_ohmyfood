@@ -114,17 +114,8 @@ h1, h2, h4{
 	cursor: pointer;
 	&::after{
 		@include emptyafter;
-		display: block;
 		opacity: 0;
 		transition: opacity 500ms;
-	}
-	&:hover{
-        &::after{
-            opacity: 1;
-        }
-    }
-    &::after{
-		@include emptyafter;
 		border-radius: 30px;
         position: absolute;
         top: 0;
@@ -135,6 +126,11 @@ h1, h2, h4{
         box-shadow: 0 3px 6px black;
 		opacity: 0;
         z-index: -1;
+	}
+	&:hover{
+        &::after{
+            opacity: 1;
+        }
     }
 }
 
@@ -186,7 +182,6 @@ img{
 	height: 100vh;
 	background: $color-bg-footer-loader;
 	@include flex-align-justify-center;
-	overflow-y: hidden;
 	animation: loader 1000ms $anim-dur+1000ms ease-in-out forwards;
 	& .word{
 		font-family: 'Shrikhand', sans-serif;
@@ -207,6 +202,7 @@ img{
 	100%{
 		opacity: 0;
 		height: 0;
+		visibility: hidden;
 	}
 }
 @keyframes words{
@@ -220,7 +216,6 @@ img{
 
 .dual-ring{
 	position: absolute;
-	display: inline-block;
 	width: 80px;
 	height: 80px;
 }
@@ -233,7 +228,7 @@ img{
 	border-radius: 50%;
 	border: 6px solid white;
 	border-color: white transparent white transparent;
-	animation: dual-ring 1.2s linear 800ms forwards;
+	animation: dual-ring 1200ms 800ms linear forwards;
 }
   @keyframes dual-ring{
 	0% {
@@ -243,8 +238,8 @@ img{
 		opacity: 1;
 	}
 	100% {
-	  transform: rotate(360deg);
-	  opacity: 0;
+		transform: rotate(360deg);
+		opacity: 0;
 	}
 }
 
@@ -544,7 +539,7 @@ img{
 	0%{
 	opacity: 0;
 	transform: translateY(20px);
-  }
+	}
   100%{
 	opacity: 1;
 	transform: translateY(0);

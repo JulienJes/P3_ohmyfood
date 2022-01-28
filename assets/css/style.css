@@ -56,19 +56,9 @@ h1, h2, h4 {
 .btn::after {
   content: ".";
   font-size: 0;
-  display: block;
   opacity: 0;
   -webkit-transition: opacity 500ms;
   transition: opacity 500ms;
-}
-
-.btn:hover::after {
-  opacity: 1;
-}
-
-.btn::after {
-  content: ".";
-  font-size: 0;
   border-radius: 30px;
   position: absolute;
   top: 0;
@@ -81,6 +71,10 @@ h1, h2, h4 {
           box-shadow: 0 3px 6px black;
   opacity: 0;
   z-index: -1;
+}
+
+.btn:hover::after {
+  opacity: 1;
 }
 
 ul {
@@ -166,7 +160,6 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  overflow-y: hidden;
   -webkit-animation: loader 1000ms 4000ms ease-in-out forwards;
           animation: loader 1000ms 4000ms ease-in-out forwards;
 }
@@ -201,6 +194,7 @@ img {
   100% {
     opacity: 0;
     height: 0;
+    visibility: hidden;
   }
 }
 
@@ -211,6 +205,7 @@ img {
   100% {
     opacity: 0;
     height: 0;
+    visibility: hidden;
   }
 }
 
@@ -234,7 +229,6 @@ img {
 
 .dual-ring {
   position: absolute;
-  display: inline-block;
   width: 80px;
   height: 80px;
 }
@@ -249,8 +243,8 @@ img {
   border-radius: 50%;
   border: 6px solid white;
   border-color: white transparent white transparent;
-  -webkit-animation: dual-ring 1.2s linear 800ms forwards;
-          animation: dual-ring 1.2s linear 800ms forwards;
+  -webkit-animation: dual-ring 1200ms 800ms linear forwards;
+          animation: dual-ring 1200ms 800ms linear forwards;
 }
 
 @-webkit-keyframes dual-ring {
